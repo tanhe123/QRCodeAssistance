@@ -40,25 +40,26 @@ public class QRCodeAssistance extends Activity {
         scanBarCodeButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Toast.makeText(getApplicationContext(), "haha", 1);
-				resultTextView.setText("ha");
-			/*	//打开扫描界面扫描条形码或二维码
+/*				//打开扫描界面扫描条形码或二维码
 				List<BasicNameValuePair> params = new ArrayList<BasicNameValuePair>();
 				// 添加post的参数
-				//params.add(new BasicNameValuePair("id", scanResult));
+//				params.add(new BasicNameValuePair("id", scanResult));
 				Toast.makeText(getApplicationContext(), "haha", 1);
 				resultTextView.setText("haha");
 				params.add(new BasicNameValuePair("id", "527a239151b9ba081f19a3b2"));
 				WebService service = new WebService(getApplicationContext());
-				resultTextView.setText(service.jsonText(WebService.SERVER_URL, params));
-
-		//		Intent openCameraIntent = new Intent(QRCodeAssistance.this,CaptureActivity.class);
-			//	startActivityForResult(openCameraIntent, 0);
-		*/
+				resultTextView.setText(service.post(WebService.SERVER_URL, params));
+//				Toast.makeText(getApplicationContext(), "1", 1).show();
+//				resultTextView.setText(service.get(WebService.SERVER_URL));
+//				Toast.makeText(getApplicationContext(), "2", 1).show();
+//				resultTextView.setText(service.get("www.baidu.com"));
+	*/			
+				Intent openCameraIntent = new Intent(QRCodeAssistance.this,CaptureActivity.class);
+				startActivityForResult(openCameraIntent, 0);		
 			}
 		});
     }
-/*
+
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
@@ -70,10 +71,10 @@ public class QRCodeAssistance extends Activity {
 			Toast.makeText(getApplicationContext(), scanResult, 1).show();
 			List<BasicNameValuePair> params = new ArrayList<BasicNameValuePair>();
 			// 添加post的参数
-			//params.add(new BasicNameValuePair("id", scanResult));
-			params.add(new BasicNameValuePair("id", "527a239151b9ba081f19a3b2"));
+			params.add(new BasicNameValuePair("id", scanResult));
+//			params.add(new BasicNameValuePair("id", "527a239151b9ba081f19a3b2"));
 			WebService service = new WebService(getApplicationContext());
 			resultTextView.setText(service.jsonText(WebService.SERVER_URL, params));
 		}
-	}*/
+	}
 }
