@@ -1,4 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?><LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="@android:color/white"
@@ -9,7 +10,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:text="Open camera" />
+        android:text="扫描" />
     
     <LinearLayout 
         android:orientation="horizontal"
@@ -18,20 +19,41 @@
         android:layout_height="wrap_content">
         
         <TextView 
-       	android:layout_width="wrap_content"
+       	android:layout_width="60dp"
         android:layout_height="wrap_content"
         android:textColor="@android:color/black"
         android:textSize="18sp"
-        android:text="Scan result：" />
+        android:text="@string/label_id" />
+
+        <TextView
+            android:id="@+id/tv_id_result"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:textSize="18sp" />
+    </LinearLayout>
+    
+    
+    <LinearLayout 
+		android:orientation="horizontal"
+		android:layout_marginTop="10dp"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content">
+    	 <TextView 
+	       	android:layout_width="60dp"
+	        android:layout_height="wrap_content"
+	        android:textColor="@android:color/black"
+	        android:textSize="18sp"
+	        android:text="@string/label_name" />
         
         <TextView 
-        android:id="@+id/tv_scan_result"
-       	android:layout_width="fill_parent"
-       	android:textSize="18sp"
-       	android:textColor="@android:color/black"
-        android:layout_height="wrap_content" 
-        android:text="test"
-        />
+	        android:id="@+id/tv_name_result"
+	       	android:layout_width="fill_parent"
+	       	android:textSize="18sp"
+	       	android:textColor="@android:color/black"
+	        android:layout_height="wrap_content" 
+	        android:text=""
+	        />
     </LinearLayout>
-  
+ 
 </LinearLayout>

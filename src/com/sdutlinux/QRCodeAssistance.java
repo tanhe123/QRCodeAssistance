@@ -2,6 +2,7 @@ package com.sdutlinux;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.http.message.BasicNameValuePair;
 
@@ -25,35 +26,21 @@ import android.widget.Toast;
 
 public class QRCodeAssistance extends Activity {
     /** Called when the activity is first created. */
-	private TextView resultTextView;
-	private EditText qrStrEditText;
-	private ImageView qrImgImageView;
-	
+	private TextView idTextView;
+	private TextView nameTextView;
+		
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         
-        resultTextView = (TextView) this.findViewById(R.id.tv_scan_result);
-            
+        idTextView = (TextView) this.findViewById(R.id.tv_id_result);
+        nameTextView = (TextView) this.findViewById(R.id.tv_name_result);
+        
         Button scanBarCodeButton = (Button) this.findViewById(R.id.btn_scan_barcode);
         scanBarCodeButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-/*				//打开扫描界面扫描条形码或二维码
-				List<BasicNameValuePair> params = new ArrayList<BasicNameValuePair>();
-				// 添加post的参数
-//				params.add(new BasicNameValuePair("id", scanResult));
-				Toast.makeText(getApplicationContext(), "haha", 1);
-				resultTextView.setText("haha");
-				params.add(new BasicNameValuePair("id", "527a239151b9ba081f19a3b2"));
-				WebService service = new WebService(getApplicationContext());
-				resultTextView.setText(service.post(WebService.SERVER_URL, params));
-//				Toast.makeText(getApplicationContext(), "1", 1).show();
-//				resultTextView.setText(service.get(WebService.SERVER_URL));
-//				Toast.makeText(getApplicationContext(), "2", 1).show();
-//				resultTextView.setText(service.get("www.baidu.com"));
-	*/			
 				Intent openCameraIntent = new Intent(QRCodeAssistance.this,CaptureActivity.class);
 				startActivityForResult(openCameraIntent, 0);		
 			}
@@ -67,14 +54,16 @@ public class QRCodeAssistance extends Activity {
 		if (resultCode == RESULT_OK) {
 			Bundle bundle = data.getExtras();
 			String scanResult = bundle.getString("result");
-			resultTextView.setText(scanResult);
 			Toast.makeText(getApplicationContext(), scanResult, 1).show();
 			List<BasicNameValuePair> params = new ArrayList<BasicNameValuePair>();
 			// 添加post的参数
 			params.add(new BasicNameValuePair("id", scanResult));
 //			params.add(new BasicNameValuePair("id", "527a239151b9ba081f19a3b2"));
 			WebService service = new WebService(getApplicationContext());
-			resultTextView.setText(service.jsonText(WebService.SERVER_URL, params));
+			Map<String, String> mp = service.jsonText(WebService.SERVER_URL, params);
+			
+			idTextView.setText(mp.get("id"));
+			nameTextView.setText(mp.get("name"));
 		}
 	}
 }

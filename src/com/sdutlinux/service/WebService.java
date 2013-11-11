@@ -2,7 +2,9 @@ package com.sdutlinux.service;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
@@ -62,8 +64,10 @@ public class WebService {
 		return null;
 	}
 
-	public String jsonText(String url, List<BasicNameValuePair>params) {
+	public Map<String,String> jsonText(String url, List<BasicNameValuePair>params) {
 		try {
+			Map<String,String> mp = new HashMap<String, String>();
+			
 			HttpPost request = new HttpPost(url); // 根据内容来源地址创建一个Http请求
 			request.setEntity(new UrlEncodedFormEntity(params, HTTP.UTF_8)); // 设置参数的编码
 			// 设置参数的编码
@@ -74,9 +78,14 @@ public class WebService {
 				JSONObject jsonObj = new JSONObject(result).getJSONObject("QRinfo");
 				String id = jsonObj.getString("id");
 				String name = jsonObj.getString("name");
+				
+				// 放入映射表
+				mp.put("id", id);
+				mp.put("name", name);
+				
 				String content = "解析内容为: " + "id:" + id + " " + "name:" + name;
-//				Toast.makeText(context, "解析内容为:" + content, 1).show();
-				return content;
+				Toast.makeText(context, "解析内容为:" + content, 1).show();
+				return mp;
 			}
 		} catch (Exception e) {
 		}

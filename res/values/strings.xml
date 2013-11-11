@@ -3,5 +3,7 @@
 
     <string name="hello">Hello World, BarCodeTestActivity!</string>
     <string name="app_name">QRCodeAssistance</string>
-
+	<string name="label_id">ID:</string>
+	<string name="label_name">Name:</string>
+	
 </resources>

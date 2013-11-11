@@ -61,7 +61,8 @@ public final class R {
         public static final int return_scan_result=0x7f060009;
         public static final int search_book_contents_failed=0x7f06000a;
         public static final int search_book_contents_succeeded=0x7f06000b;
-        public static final int tv_scan_result=0x7f060010;
+        public static final int tv_id_result=0x7f060010;
+        public static final int tv_name_result=0x7f060011;
         public static final int viewfinder_view=0x7f06000d;
     }
     public static final class layout {
@@ -75,5 +76,7 @@ public final class R {
     public static final class string {
         public static final int app_name=0x7f070001;
         public static final int hello=0x7f070000;
+        public static final int label_id=0x7f070002;
+        public static final int label_name=0x7f070003;
     }
 }
