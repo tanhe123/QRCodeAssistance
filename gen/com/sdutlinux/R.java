@@ -82,6 +82,7 @@ public final class R {
         public static final int hello=0x7f070000;
         public static final int label_id=0x7f070002;
         public static final int label_name=0x7f070003;
+        public static final int save=0x7f070007;
         public static final int scan=0x7f070006;
     }
 }

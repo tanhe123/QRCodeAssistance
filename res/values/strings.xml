@@ -8,4 +8,5 @@
 	<string name="edit">编辑</string>
 	<string name="cancel">返回</string>
 	<string name="scan">扫描</string>
+	<string name="save">保存</string>
 </resources>
