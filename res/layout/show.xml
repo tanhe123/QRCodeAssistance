@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical"
+    >
+    
+    <RelativeLayout 
+        android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+        >
+	    <Button 
+	  	    android:id="@+id/btn_edit"
+	  	    android:layout_marginLeft="100dp"
+	  	    android:layout_width="wrap_content"
+	  	    android:layout_height="wrap_content" 
+	  	    android:text="@string/edit"
+	  	    />
+	    <Button 
+	        android:layout_toRightOf="@id/btn_edit"
+			android:layout_centerInParent="true"
+	  	    android:layout_width="wrap_content"
+	  	    android:layout_height="wrap_content" 
+	  	    android:text="@string/cancel"
+	  	    android:onClick="closeActivity"
+	  	    /> 
+    </RelativeLayout>
+        
+    <TableLayout
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:stretchColumns="1" >
+
+        <TableRow >
+	        <TextView
+	        	android:textColor="@android:color/black"
+	        	android:textSize="18sp"
+	        	android:text="@string/label_id" />
+				
+	        <TextView
+	            android:gravity="right"
+	            android:id="@+id/tv_id_result"
+	          	android:textColor="@android:color/black"
+	            android:textSize="18sp" />
+	     
+	    </TableRow>
+    
+    	<TableRow>
+    	    <TextView 
+	       	android:textColor="@android:color/black"
+	        android:textSize="18sp"
+	        android:text="@string/label_name"
+	        />
+        
+	        <TextView 
+		        android:id="@+id/tv_name_result"
+		       	android:textSize="18sp"
+		       	android:textColor="@android:color/black"/>
+    	</TableRow>
+    </TableLayout>
+    
+    
+</LinearLayout>

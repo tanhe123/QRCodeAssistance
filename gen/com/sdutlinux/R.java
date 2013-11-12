@@ -48,6 +48,7 @@ public final class R {
          */
         public static final int auto_focus=0x7f060000;
         public static final int btn_cancel_scan=0x7f06000e;
+        public static final int btn_edit=0x7f060010;
         public static final int btn_scan_barcode=0x7f06000f;
         public static final int decode=0x7f060001;
         public static final int decode_failed=0x7f060002;
@@ -61,13 +62,14 @@ public final class R {
         public static final int return_scan_result=0x7f060009;
         public static final int search_book_contents_failed=0x7f06000a;
         public static final int search_book_contents_succeeded=0x7f06000b;
-        public static final int tv_id_result=0x7f060010;
-        public static final int tv_name_result=0x7f060011;
+        public static final int tv_id_result=0x7f060011;
+        public static final int tv_name_result=0x7f060012;
         public static final int viewfinder_view=0x7f06000d;
     }
     public static final class layout {
         public static final int camera=0x7f030000;
         public static final int main=0x7f030001;
+        public static final int show=0x7f030002;
     }
     public static final class raw {
         public static final int beep=0x7f040000;
@@ -75,8 +77,11 @@ public final class R {
     }
     public static final class string {
         public static final int app_name=0x7f070001;
+        public static final int cancel=0x7f070005;
+        public static final int edit=0x7f070004;
         public static final int hello=0x7f070000;
         public static final int label_id=0x7f070002;
         public static final int label_name=0x7f070003;
+        public static final int scan=0x7f070006;
     }
 }
