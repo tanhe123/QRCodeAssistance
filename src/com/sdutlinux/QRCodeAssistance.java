@@ -34,9 +34,6 @@ public class QRCodeAssistance extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         
-        idTextView = (TextView) this.findViewById(R.id.tv_id_result);
-        nameTextView = (TextView) this.findViewById(R.id.tv_name_result);
-        
         Button scanBarCodeButton = (Button) this.findViewById(R.id.btn_scan_barcode);
         scanBarCodeButton.setOnClickListener(new OnClickListener() {
 			@Override

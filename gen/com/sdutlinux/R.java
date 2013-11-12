@@ -55,6 +55,8 @@ public final class R {
         public static final int decode_succeeded=0x7f060003;
         public static final int encode_failed=0x7f060004;
         public static final int encode_succeeded=0x7f060005;
+        public static final int et_id=0x7f060011;
+        public static final int et_name=0x7f060012;
         public static final int launch_product_query=0x7f060006;
         public static final int preview_view=0x7f06000c;
         public static final int quit=0x7f060007;
@@ -62,8 +64,6 @@ public final class R {
         public static final int return_scan_result=0x7f060009;
         public static final int search_book_contents_failed=0x7f06000a;
         public static final int search_book_contents_succeeded=0x7f06000b;
-        public static final int tv_id_result=0x7f060011;
-        public static final int tv_name_result=0x7f060012;
         public static final int viewfinder_view=0x7f06000d;
     }
     public static final class layout {

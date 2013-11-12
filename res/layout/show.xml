@@ -38,9 +38,10 @@
 	        	android:textSize="18sp"
 	        	android:text="@string/label_id" />
 				
-	        <TextView
+	        <EditText
+	            android:id="@+id/et_id"
+	            android:enabled="false"
 	            android:gravity="right"
-	            android:id="@+id/tv_id_result"
 	          	android:textColor="@android:color/black"
 	            android:textSize="18sp" />
 	     
@@ -53,8 +54,9 @@
 	        android:text="@string/label_name"
 	        />
         
-	        <TextView 
-		        android:id="@+id/tv_name_result"
+	        <EditText 
+		        android:id="@+id/et_name"
+		        android:enabled="false"
 		       	android:textSize="18sp"
 		       	android:textColor="@android:color/black"/>
     	</TableRow>
