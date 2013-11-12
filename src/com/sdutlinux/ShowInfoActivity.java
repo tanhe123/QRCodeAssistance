@@ -55,7 +55,9 @@ public class ShowInfoActivity extends Activity{
 			
 			// TODO: POST 操作
 			WebService service = new WebService(getApplicationContext());
-	//		service.post(WebService.SERVER_URL, params);
+			
+			// TODO:测试完毕取消注释
+//			service.post(WebService.SERVER_URL, params);
 			
 			et_id.setFocusable(false);
 			et_name.setFocusable(false);
