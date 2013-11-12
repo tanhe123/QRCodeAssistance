@@ -59,13 +59,20 @@ public class QRCodeAssistance extends Activity {
 			// 添加post的参数
 //			params.add(new BasicNameValuePair("id", scanResult));
 //			params.add(new BasicNameValuePair("id", "527a239151b9ba081f19a3b2"));
-//			WebService service = new WebService(getApplicationContext());
-//			Map<String, String> mp = service.jsonText(WebService.SERVER_URL, params);
+			WebService service = new WebService(getApplicationContext());
+			//Bundle bundle = service.jsonText(WebService.SERVER_URL, params);
 			
 //			idTextView.setText(mp.get("id"));
 //			nameTextView.setText(mp.get("name"));
 			
+			/////////测试代码开始
+			Bundle bundle = new Bundle();
+			bundle.putString("id", "1");
+			bundle.putString("name", "tan");
+			////////////测试代码结束
+			
 			Intent intent = new Intent(QRCodeAssistance.this, ShowInfoActivity.class);
+			intent.putExtras(bundle);
 			startActivity(intent);
 //		}
 	}

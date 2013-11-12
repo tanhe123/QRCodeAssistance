@@ -17,6 +17,8 @@ import org.apache.http.util.EntityUtils;
 import org.json.JSONObject;
 
 import android.content.Context;
+import android.os.Bundle;
+import android.text.style.BulletSpan;
 import android.widget.Toast;
 
 public class WebService {
@@ -64,9 +66,9 @@ public class WebService {
 		return null;
 	}
 
-	public Map<String,String> jsonText(String url, List<BasicNameValuePair>params) {
+	public Bundle jsonText(String url, List<BasicNameValuePair>params) {
 		try {
-			Map<String,String> mp = new HashMap<String, String>();
+			Bundle bundle = new Bundle();
 			
 			HttpPost request = new HttpPost(url); // 根据内容来源地址创建一个Http请求
 			request.setEntity(new UrlEncodedFormEntity(params, HTTP.UTF_8)); // 设置参数的编码
@@ -80,12 +82,12 @@ public class WebService {
 				String name = jsonObj.getString("name");
 				
 				// 放入映射表
-				mp.put("id", id);
-				mp.put("name", name);
+				bundle.putString("id", id);
+				bundle.putString("name", name);
 				
 				String content = "解析内容为: " + "id:" + id + " " + "name:" + name;
 				Toast.makeText(context, "解析内容为:" + content, 1).show();
-				return mp;
+				return bundle;
 			}
 		} catch (Exception e) {
 		}
