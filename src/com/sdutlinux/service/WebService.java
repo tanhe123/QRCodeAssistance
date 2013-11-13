@@ -7,11 +7,13 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.params.CoreConnectionPNames;
 import org.apache.http.protocol.HTTP;
 import org.apache.http.util.EntityUtils;
 import org.json.JSONObject;
@@ -33,16 +35,22 @@ public class WebService {
 		try {
 			HttpPost request = new HttpPost(url); // 根据内容来源地址创建一个Http请求
 			request.setEntity(new UrlEncodedFormEntity(params, HTTP.UTF_8)); // 设置参数的编码
-			HttpResponse httpResponse = new DefaultHttpClient().execute(request); // 发送请求并获取反馈
-			// 解析返回的内容
-			Toast.makeText(context, "错误代码：" + httpResponse.getStatusLine().getStatusCode(), 1).show();
 			
+			HttpClient client = new DefaultHttpClient();
+			
+			// 设置超时时间
+			client.getParams().setParameter(CoreConnectionPNames.CONNECTION_TIMEOUT, 5000);
+			client.getParams().setParameter(CoreConnectionPNames.SO_TIMEOUT, 10000);
+			
+			HttpResponse httpResponse = client.execute(request); // 发送请求并获取反馈
+			
+			// 解析返回的内容
 			if (httpResponse.getStatusLine().getStatusCode() != 404) {
 				String result = EntityUtils.toString(httpResponse.getEntity());
-				Toast.makeText(context, result, Toast.LENGTH_LONG).show();
 				return result;
 			}
 		} catch (Exception e) {
+			Toast.makeText(context, "连接失败", 1).show();
 		}
 		return null;
 	}
@@ -72,13 +80,18 @@ public class WebService {
 			
 			HttpPost request = new HttpPost(url); // 根据内容来源地址创建一个Http请求
 			request.setEntity(new UrlEncodedFormEntity(params, HTTP.UTF_8)); // 设置参数的编码
-			// 设置参数的编码
-			HttpResponse httpResponse = new DefaultHttpClient().execute(request); // 发送请求并获取反馈
+//			HttpResponse httpResponse = new DefaultHttpClient().execute(request); // 发送请求并获取反馈
+			HttpClient client = new DefaultHttpClient();
+			// 设置超时时间
+			client.getParams().setParameter(CoreConnectionPNames.CONNECTION_TIMEOUT, 5000);
+			client.getParams().setParameter(CoreConnectionPNames.SO_TIMEOUT, 10000);
+			
+			HttpResponse httpResponse = client.execute(request); // 发送请求并获取反馈
 			// 解析返回的内容
 			if (httpResponse.getStatusLine().getStatusCode() != 404) {
 				String result = EntityUtils.toString(httpResponse.getEntity());
 				JSONObject jsonObj = new JSONObject(result).getJSONObject("QRinfo");
-				String id = jsonObj.getString("id");
+				String id = jsonObj.getString("id");	//post返回的id为真实id，但不是二维码的信息
 				String name = jsonObj.getString("name");
 				
 				// 放入映射表
@@ -90,6 +103,7 @@ public class WebService {
 				return bundle;
 			}
 		} catch (Exception e) {
+			Toast.makeText(context, "连接超时", 1).show();
 		}
 		Toast.makeText(context, "解析失败", 1).show();
 		return null;

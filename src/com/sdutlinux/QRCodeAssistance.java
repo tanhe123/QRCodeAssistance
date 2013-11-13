@@ -26,8 +26,6 @@ import android.widget.Toast;
 
 public class QRCodeAssistance extends Activity {
     /** Called when the activity is first created. */
-	private TextView idTextView;
-	private TextView nameTextView;
 		
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -54,22 +52,27 @@ public class QRCodeAssistance extends Activity {
 //			Toast.makeText(getApplicationContext(), scanResult, 1).show();
 			List<BasicNameValuePair> params = new ArrayList<BasicNameValuePair>();
 			// 添加post的参数
-//			params.add(new BasicNameValuePair("id", scanResult));
-//			params.add(new BasicNameValuePair("id", "527a239151b9ba081f19a3b2"));
+//			params.add(new BasicNameValuePair("_id", scanResult));
+			params.add(new BasicNameValuePair("_id", "527a239151b9ba081f19a3b2"));
 			WebService service = new WebService(getApplicationContext());
-			//Bundle bundle = service.jsonText(WebService.SERVER_URL, params);
+			Bundle bundleResult = service.jsonText(WebService.SERVER_URL, params);
 			
-//			idTextView.setText(mp.get("id"));
-//			nameTextView.setText(mp.get("name"));
+			// 测试开始
+			String scanResult = "527a239151b9ba081f19a3b2";
+			// 测试开始
 			
+			bundleResult.putString("_id", scanResult);
+			
+			/*
 			/////////测试代码开始
 			Bundle bundle = new Bundle();
 			bundle.putString("id", "1");
 			bundle.putString("name", "tan");
 			////////////测试代码结束
+			*/
 			
 			Intent intent = new Intent(QRCodeAssistance.this, ShowInfoActivity.class);
-			intent.putExtras(bundle);
+			intent.putExtras(bundleResult);
 			startActivity(intent);
 //		}
 	}

@@ -20,7 +20,7 @@ import android.widget.Toast;
 public class ShowInfoActivity extends Activity{
 	private EditText et_id;
 	private EditText et_name;
-
+	private Intent data;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -29,7 +29,10 @@ public class ShowInfoActivity extends Activity{
 		et_id = (EditText) findViewById(R.id.et_id);
 		et_name = (EditText) findViewById(R.id.et_name);
 
-		Intent data = getIntent();
+		et_id.setEnabled(false);
+		et_name.setEnabled(false);
+		
+		data = getIntent();
 		et_id.setText(data.getStringExtra("id"));
 		et_name.setText(data.getStringExtra("name"));
 	}
@@ -40,31 +43,31 @@ public class ShowInfoActivity extends Activity{
 		et_name = (EditText) findViewById(R.id.et_name);
 		
 		if (btn_edit.getText().toString().equals(getString(R.string.edit))) {
-			et_id.setFocusable(true);
-			et_name.setFocusable(true);
+			et_name.setEnabled(true);
+
 			btn_edit.setText(R.string.save);
 		}
 		else {
-			String id = et_id.getText().toString();
+	//		String id = et_id.getText().toString();
 			String name = et_name.getText().toString();
 			
 			// post参数
 			List<BasicNameValuePair> params = new ArrayList<BasicNameValuePair>();
-			params.add(new BasicNameValuePair("id", id));
+			params.add(new BasicNameValuePair("_id", data.getStringExtra("_id")));
 			params.add(new BasicNameValuePair("name", name));
 			
-			// TODO: POST 操作
+			// POST 操作
 			WebService service = new WebService(getApplicationContext());
 			
 			// TODO:测试完毕取消注释
-//			service.post(WebService.SERVER_URL, params);
+			String s = service.post(WebService.SERVER_URL+"/change", params);
 			
-			et_id.setFocusable(false);
-			et_name.setFocusable(false);
+			et_name.setEnabled(true);
 			
 			btn_edit.setText(R.string.edit);
-			
-			Toast.makeText(getApplicationContext(), "保存成功", 1).show();
+		//	if (s.trim().equals("done")) Toast.makeText(getApplicationContext(), "保存成功", 1).show();
+			//else Toast.makeText(getApplicationContext(), "保存失败", 1).show();
+			Toast.makeText(getApplicationContext(), s, 1).show();
 		}
 	}
 	
