@@ -55,13 +55,13 @@ public class QRCodeAssistance extends Activity {
 //			params.add(new BasicNameValuePair("_id", scanResult));
 			params.add(new BasicNameValuePair("_id", "527a239151b9ba081f19a3b2"));
 			WebService service = new WebService(getApplicationContext());
-			Bundle bundleResult = service.jsonText(WebService.SERVER_URL, params);
+		//	Bundle bundleResult = service.jsonText(WebService.SERVER_URL, params);
 			
 			// 测试开始
 			String scanResult = "527a239151b9ba081f19a3b2";
 			// 测试开始
 			
-			bundleResult.putString("_id", scanResult);
+			//bundleResult.putString("_id", scanResult);
 			
 			/*
 			/////////测试代码开始
@@ -72,7 +72,7 @@ public class QRCodeAssistance extends Activity {
 			*/
 			
 			Intent intent = new Intent(QRCodeAssistance.this, ShowInfoActivity.class);
-			intent.putExtras(bundleResult);
+			//intent.putExtras(bundleResult);
 			startActivity(intent);
 //		}
 	}

@@ -1,6 +1,7 @@
 package com.sdutlinux;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.http.message.BasicNameValuePair;
@@ -15,9 +16,42 @@ import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
 public class ShowInfoActivity extends Activity{
+	private ListView listView;
+	
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.show);
+		
+		listView = (ListView) this.findViewById(R.id.listView);
+		
+		show();
+	}
+
+	private void show() {
+		ArrayList<HashMap<String, String>> data = new ArrayList<HashMap<String,String>>(); 
+		
+		HashMap<String, String> item1 = new HashMap<String, String>();
+		item1.put("key", "1111");
+		item1.put("value", "1111");
+		HashMap<String, String> item2 = new HashMap<String, String>();
+		item2.put("key", "2222");
+		item2.put("value", "2222");
+		
+		data.add(item1);
+		data.add(item2);
+		
+		SimpleAdapter adapter = new SimpleAdapter(this, data, R.id.listView,
+				new String[] {"key", "value"}, new int[] {R.id.key, R.id.value});
+		listView.setAdapter(adapter);
+	}
+	
+	/*
 	private EditText et_id;
 	private EditText et_name;
 	private Intent data;
@@ -73,5 +107,5 @@ public class ShowInfoActivity extends Activity{
 	
 	public void closeActivity(View v) {
 		this.finish();
-	}
+	}*/
 }
