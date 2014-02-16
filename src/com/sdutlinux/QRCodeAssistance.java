@@ -1,29 +1,14 @@
 package com.sdutlinux;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-
-import org.apache.http.message.BasicNameValuePair;
-
-import com.sdutlinux.R;
-import com.sdutlinux.service.WebService;
-import com.google.zxing.WriterException;
-import com.zxing.activity.CaptureActivity;
-import com.zxing.encoding.EncodingHandler;
-
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
+
+import com.zxing.activity.CaptureActivity;
 
 public class QRCodeAssistance extends Activity {
     private static final String TAG = "QRCodeAssistancetest";
