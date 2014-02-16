@@ -48,6 +48,7 @@ public final class R {
          */
         public static final int auto_focus=0x7f060000;
         public static final int btn_cancel_scan=0x7f06000e;
+        public static final int btn_check=0x7f060012;
         public static final int btn_scan_barcode=0x7f060011;
         public static final int decode=0x7f060001;
         public static final int decode_failed=0x7f060002;
@@ -56,7 +57,8 @@ public final class R {
         public static final int encode_succeeded=0x7f060005;
         public static final int key=0x7f06000f;
         public static final int launch_product_query=0x7f060006;
-        public static final int listView=0x7f060012;
+        public static final int listView=0x7f060014;
+        public static final int nameTxt=0x7f060013;
         public static final int preview_view=0x7f06000c;
         public static final int quit=0x7f060007;
         public static final int restart_preview=0x7f060008;
@@ -79,6 +81,7 @@ public final class R {
     public static final class string {
         public static final int app_name=0x7f070001;
         public static final int cancel=0x7f070005;
+        public static final int check=0x7f070008;
         public static final int edit=0x7f070004;
         public static final int hello=0x7f070000;
         public static final int label_id=0x7f070002;
