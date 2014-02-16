@@ -24,7 +24,7 @@ import android.text.style.BulletSpan;
 import android.widget.Toast;
 
 public class WebService {
-	public static final String SERVER_URL = "http://192.168.1.152:5000";
+	public static final String SERVER_URL = "http://http://192.168.1.101:8000/devices/phone/";
 
 	private Context context;
 	public WebService(Context context) {

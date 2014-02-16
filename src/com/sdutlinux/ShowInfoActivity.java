@@ -41,12 +41,12 @@ public class ShowInfoActivity extends Activity{
 		item1.put("value", "1111");
 		HashMap<String, String> item2 = new HashMap<String, String>();
 		item2.put("key", "2222");
-		item2.put("value", "2222");
+		item2.put("	lue", "2222");
 		
 		data.add(item1);
 		data.add(item2);
 		
-		SimpleAdapter adapter = new SimpleAdapter(this, data, R.id.listView,
+		SimpleAdapter adapter = new SimpleAdapter(this, data, R.layout.item,
 				new String[] {"key", "value"}, new int[] {R.id.key, R.id.value});
 		listView.setAdapter(adapter);
 	}

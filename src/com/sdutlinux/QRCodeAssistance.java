@@ -49,17 +49,19 @@ public class QRCodeAssistance extends Activity {
 //		if (resultCode == RESULT_OK) {
 //			Bundle bundle = data.getExtras();
 //			String scanResult = bundle.getString("result");
+		
+			// 测试开始
+			String scanResult = "20036370AA;钥匙柜;";
+			// 测试开始
+			
 //			Toast.makeText(getApplicationContext(), scanResult, 1).show();
 			List<BasicNameValuePair> params = new ArrayList<BasicNameValuePair>();
 			// 添加post的参数
-//			params.add(new BasicNameValuePair("_id", scanResult));
-			params.add(new BasicNameValuePair("_id", "527a239151b9ba081f19a3b2"));
+			params.add(new BasicNameValuePair("_id", scanResult));
+		//	params.add(new BasicNameValuePair("_id", "527a239151b9ba081f19a3b2"));
 			WebService service = new WebService(getApplicationContext());
-		//	Bundle bundleResult = service.jsonText(WebService.SERVER_URL, params);
-			
-			// 测试开始
-			String scanResult = "527a239151b9ba081f19a3b2";
-			// 测试开始
+			Bundle bundleResult = service.jsonText(WebService.SERVER_URL, params);
+
 			
 			//bundleResult.putString("_id", scanResult);
 			
