@@ -31,6 +31,7 @@ public class WebService {
 		this.context = context;
 	}
 	
+	// 测试用
 	public String post(String url, List<BasicNameValuePair> params) {
 		try {
  			HttpPost request = new HttpPost(url); // 根据内容来源地址创建一个Http请求
@@ -54,7 +55,8 @@ public class WebService {
 		}
 		return null;
 	}
-
+	
+	// 测试用
 	public String get(String url) {
 		
 		try {
