@@ -12,70 +12,21 @@
         android:textSize="40sp"
         android:text="设备名称"
         />
+   
+    <ExpandableListView   
+        android:id="@+id/expListView"                 
+        android:layout_width="fill_parent"                  
+        android:layout_height="fill_parent"                                
+        android:drawSelectorOnTop="false"
+      
+        />   
     
+    <!--  
     <ListView 
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:id="@+id/listView"
         ></ListView>
-    
-    <!-- 
-    <RelativeLayout 
-        android:layout_width="fill_parent"
-	    android:layout_height="wrap_content"
-        >
-	    <Button 
-	  	    android:id="@+id/btn_edit"
-	  	    android:layout_marginLeft="100dp"
-	  	    android:layout_width="wrap_content"
-	  	    android:layout_height="wrap_content"
-	  	    android:onClick="editActivity" 
-	  	    android:text="@string/edit"
-	  	    />
-	    <Button 
-	        android:layout_toRightOf="@id/btn_edit"
-			android:layout_centerInParent="true"
-	  	    android:layout_width="wrap_content"
-	  	    android:layout_height="wrap_content" 
-	  	    android:text="@string/cancel"
-	  	    android:onClick="closeActivity"
-	  	    /> 
-    </RelativeLayout>
-        
-    <TableLayout
-        android:layout_width="wrap_content"
-        android:layout_height="fill_parent"
-        android:stretchColumns="1" >
+	-->
 
-        <TableRow >
-	        <TextView
-	        	android:textColor="@android:color/black"
-	        	android:textSize="18sp"
-	        	android:text="@string/label_id" />
-				
-	    	    <EditText
-	            android:id="@+id/et_id"
-	            android:inputType="text"
-	          	android:textSize="18sp" 
-	          	android:textColor="@android:color/black"
-	            />
-	     
-	    </TableRow>
-    
-    	<TableRow>
-    	    <TextView 
-	       	android:textColor="@android:color/black"
-	        android:textSize="18sp"
-	        android:text="@string/label_name"
-	        />
-        
-	        <EditText 
-		        android:id="@+id/et_name"
-		        android:inputType="text"
-		       	android:textSize="18sp"
-		       	android:textColor="@android:color/black"/>
-    	</TableRow>
-    </TableLayout>-->
-    
-    
 </LinearLayout>
