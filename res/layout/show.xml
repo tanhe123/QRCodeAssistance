@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?><LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical"
+    android:background="@drawable/background"
     >
     
     <TextView 
@@ -10,6 +10,7 @@
         android:layout_height="50dp"
         android:id="@+id/nameTxt"
         android:textSize="40sp"
+        android:textColor="@color/dark"
         android:text="设备名称"
         />
    
@@ -18,15 +19,6 @@
         android:layout_width="fill_parent"                  
         android:layout_height="fill_parent"                                
         android:drawSelectorOnTop="false"
-      
+        android:cacheColorHint="#00000000" 
         />   
-    
-    <!--  
-    <ListView 
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:id="@+id/listView"
-        ></ListView>
-	-->
-
 </LinearLayout>

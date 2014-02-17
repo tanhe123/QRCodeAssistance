@@ -36,12 +36,12 @@ public class QRCodeAssistance extends Activity {
 		super.onActivityResult(requestCode, resultCode, data);
 		
 		//处理扫描结果（在界面上显示）
-		if (resultCode == RESULT_OK) {
-			Bundle result = data.getExtras();
-			String scanResult = result.getString("result");
+	//	if (resultCode == RESULT_OK) {
+		//	Bundle result = data.getExtras();
+		//	String scanResult = result.getString("result");
 		
 			// 测试开始
-		//	String scanResult = "20036370AA;钥匙柜;";
+			String scanResult = "20036370AA;钥匙柜;";
 			// 测试开始
 			
 			String[] results = scanResult.split(";");
@@ -49,12 +49,10 @@ public class QRCodeAssistance extends Activity {
 			Bundle bundle = new Bundle();
 			bundle.putString("id", results[0]);
 			bundle.putString("name", results[1]);
-			
-			Log.i(TAG, "id: " + results[0] + "\nname: " + results[1]);
-			
+	
 			Intent intent = new Intent(QRCodeAssistance.this, ShowInfoActivity.class);
 			intent.putExtras(bundle);
 			startActivity(intent);
 		}
-	}
+	//}
 }

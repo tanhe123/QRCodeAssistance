@@ -13,6 +13,7 @@ public final class R {
     public static final class color {
         public static final int bg_color=0x7f050000;
         public static final int contents_text=0x7f050001;
+        public static final int dark=0x7f05001b;
         public static final int encode_view=0x7f050002;
         public static final int grgray=0x7f05001a;
         public static final int header=0x7f050019;
@@ -40,8 +41,9 @@ public final class R {
         public static final int viewfinder_mask=0x7f050018;
     }
     public static final class drawable {
-        public static final int ic_launcher=0x7f020000;
-        public static final int navbar=0x7f020001;
+        public static final int background=0x7f020000;
+        public static final int ic_launcher=0x7f020001;
+        public static final int navbar=0x7f020002;
     }
     public static final class id {
         /**  Messages IDs 

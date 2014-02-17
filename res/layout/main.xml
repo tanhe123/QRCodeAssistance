@@ -2,23 +2,34 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@android:color/white"
+    android:background="@drawable/background"
+    android:gravity="center_vertical"
     android:orientation="vertical" >
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="欢迎使用"
+        android:textColor="@android:color/background_dark"
+        android:textSize="50sp" />
+    
     <Button
         android:id="@+id/btn_scan_barcode"
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:text="@string/scan" 
-        />
+        android:layout_gravity="center"
+        android:layout_marginTop="80dp"
+        android:text="@string/scan"
+        android:textSize="30sp" />
     
-    <Button 
+    <Button
         android:id="@+id/btn_check"
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:text="@string/check" 
-        />
+        android:layout_gravity="center"
+        android:layout_marginTop="100dp"
+        android:textSize="30sp"
+        android:text="@string/check" />
     
 </LinearLayout>

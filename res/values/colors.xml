@@ -29,4 +29,5 @@
   <color name="header">#58567D</color>
   <color name="grgray">#686868</color>
       
+  <color name="dark">#000000</color>
 </resources>
