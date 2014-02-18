@@ -37,6 +37,7 @@ public class WebService {
  			HttpPost request = new HttpPost(url); // 根据内容来源地址创建一个Http请求
 			request.setEntity(new UrlEncodedFormEntity(params, HTTP.UTF_8)); // 设置参数的编码
 			
+			
 			HttpClient client = new DefaultHttpClient();
 			
 			// 设置超时时间
