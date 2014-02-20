@@ -30,4 +30,5 @@
   <color name="grgray">#686868</color>
       
   <color name="dark">#000000</color>
+  <color name="red">#FF0033</color>
 </resources>

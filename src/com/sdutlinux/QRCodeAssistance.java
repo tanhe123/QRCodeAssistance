@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
+import com.sdutlinux.service.SysApplication;
 import com.zxing.activity.CaptureActivity;
 
 public class QRCodeAssistance extends Activity {
@@ -18,15 +19,24 @@ public class QRCodeAssistance extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 		
+        SysApplication.getInstance().addActivity(this);
         
-        Button scanBarCodeButton = (Button) this.findViewById(R.id.btn_scan_barcode);
-        Button checkButton		 = (Button) this.findViewById(R.id.btn_check);
+        Button btn_scan_barcode = (Button) this.findViewById(R.id.btn_scan_barcode);
+        Button btn_check		= (Button) this.findViewById(R.id.btn_check);
+        Button btn_exit			= (Button) this.findViewById(R.id.btn_exit);
         
-        scanBarCodeButton.setOnClickListener(new OnClickListener() {
+        btn_scan_barcode.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				Intent openCameraIntent = new Intent(QRCodeAssistance.this,CaptureActivity.class);
 				startActivityForResult(openCameraIntent, 0);		
+			}
+		});
+        
+        btn_exit.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+				SysApplication.getInstance().exit();
 			}
 		});
     }

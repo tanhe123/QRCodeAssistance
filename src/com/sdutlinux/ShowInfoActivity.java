@@ -15,6 +15,7 @@ import android.widget.ExpandableListView;
 import android.widget.SimpleExpandableListAdapter;
 import android.widget.TextView;
 
+import com.sdutlinux.service.SysApplication;
 import com.sdutlinux.service.WebService;
 
 public class ShowInfoActivity extends Activity{
@@ -29,13 +30,14 @@ public class ShowInfoActivity extends Activity{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.show);
 		
+		SysApplication.getInstance().addActivity(this);
+		
 		expListView = (ExpandableListView) this.findViewById(R.id.expListView);	
 		nameTxt = (TextView) this.findViewById(R.id.nameTxt);
 		
 		Intent data = getIntent();
 		String id = data.getStringExtra("id");
 		String name = data.getStringExtra("name");
-		
 		
 		nameTxt.setText("设备名称: " + name);
 		
