@@ -1,9 +1,9 @@
 package com.sdutlinux;
 
-// 当登录成功的时候，要销毁当前的 Activity(搞定)
-// 退出的时候，销毁所有 Activity
+// 当登录成功的时候，要销毁当前的 Activity(finish)
 // 按钮的渐变效果(需要设置按下 摊开的效果)
 // 密码安全问题， 配置文件存取，其实就是读取 xml
+// 
 
 import android.app.Activity;
 import android.content.Intent;
@@ -56,6 +56,7 @@ public class UserLogin extends Activity {
 			chb_remember.setChecked(true);
 		}
 		
+		
 		btn_login.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -91,6 +92,8 @@ public class UserLogin extends Activity {
 					intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 					startActivity(intent);
 					
+					// 结束当前的Activity
+					UserLogin.this.finish();
 				} else {
 					txt_error.setText("帐号或密码错误");
 					txt_error.setVisibility(View.VISIBLE);
