@@ -20,7 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="60dp"
-        android:background="@drawable/button"
+        android:background="@drawable/button_selector"
         android:text="@string/scan"
         android:textSize="30sp" />
     
@@ -30,7 +30,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="50dp"
-        android:background="@drawable/button"
+        android:background="@drawable/button_selector"
         android:text="@string/check"
         android:textSize="30sp" />
     
@@ -40,7 +40,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="50dp"
-        android:background="@drawable/button"
+        android:background="@drawable/button_selector"
         android:text="@string/exit"
         android:textSize="30sp" />
     

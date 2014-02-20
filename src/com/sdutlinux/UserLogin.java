@@ -1,9 +1,7 @@
 package com.sdutlinux;
 
-// 当登录成功的时候，要销毁当前的 Activity(finish)
-// 按钮的渐变效果(需要设置按下 摊开的效果)
 // 密码安全问题， 配置文件存取，其实就是读取 xml
-// 
+ 
 
 import android.app.Activity;
 import android.content.Intent;
