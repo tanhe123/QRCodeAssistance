@@ -28,6 +28,7 @@ import android.widget.Toast;
 
 public class WebService {
 	public static final String SERVER_URL = "http://192.168.1.100:8000/devices/phone/";
+	public static final String LOGIN_URL = "http://192.168.1.100:8000/devices/phone-login/";
 	public static final String TAG = "WebServiceTest";
 	
 	private static String SESSIONID = null;
@@ -43,22 +44,27 @@ public class WebService {
  			HttpPost request = new HttpPost(url); // 根据内容来源地址创建一个Http请求
 			request.setEntity(new UrlEncodedFormEntity(params, HTTP.UTF_8)); // 设置参数的编码
 			
-			
 			// 设置sessionID
 			if (null != SESSIONID) {
 				request.setHeader("Cookie", "sessionid=" + SESSIONID);
 			}
-			
+		
 			DefaultHttpClient client = new DefaultHttpClient();
-			
+
 			// 设置超时时间
 			client.getParams().setParameter(CoreConnectionPNames.CONNECTION_TIMEOUT, 5000);
 			client.getParams().setParameter(CoreConnectionPNames.SO_TIMEOUT, 10000);
 			
+			
+			
 			HttpResponse httpResponse = client.execute(request); // 发送请求并获取反馈
+			Toast.makeText(context, "ha", Toast.LENGTH_SHORT).show();
+			
 		
 			// 解析返回的内容
 			if (httpResponse.getStatusLine().getStatusCode() != 404) {
+				
+				
 				// 获取 Cookie, sessionid
 				List<Cookie> cookie = client.getCookieStore().getCookies();
 	
@@ -105,9 +111,9 @@ public class WebService {
 	public JSONObject getJson(String url, List<BasicNameValuePair> params) throws JSONException {
 		String content = post(url, params);
 		
-		JSONObject jsonObj = stringToJson(content);
+		//JSONObject jsonObj = stringToJson(content);
 		
-		return jsonObj;
+		return null;//jsonObj;
 	}
 	
 	public JSONObject stringToJson(String content) throws JSONException {

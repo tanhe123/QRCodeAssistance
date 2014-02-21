@@ -69,8 +69,6 @@ public class UserLogin extends Activity {
 		btn_login.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				
-
 				String userName = edt_userName.getText().toString().trim();
 				String password = edt_password.getText().toString().trim();
 				
@@ -90,7 +88,8 @@ public class UserLogin extends Activity {
 
 				
 				try {
-					String result = login(userName, password);
+					//String result = 
+							login(userName, password);/*
 					if ( ! result.contains("-1") ) {	// 登录成功
 						if (chb_remember.isChecked()) { // 点击了记住密码
 							dataService.saveString("username", userName);
@@ -112,7 +111,7 @@ public class UserLogin extends Activity {
 					} else {							// 登录失败
 						txt_error.setText("帐号或密码错误");
 						txt_error.setVisibility(View.VISIBLE);
-					}
+					}*/
 				} catch (JSONException e) {
 					e.printStackTrace();
 				}
@@ -128,17 +127,20 @@ public class UserLogin extends Activity {
 	 * @return 
 	 * @throws JSONException
 	 */
-	public String login(String username, String password) throws JSONException {
+	public void login(String username, String password) throws JSONException {
 		List<BasicNameValuePair> params = new ArrayList<BasicNameValuePair>();
 		
 		
 		params.add(new BasicNameValuePair("username", username));
 		params.add(new BasicNameValuePair("password", password));
 		
-		JSONObject jsonObj = webService.getJson("http://192.168.1.100:8000/devices/phone-login/", params);
-		String flag = webService.getFromJson(jsonObj, "flag");
+
 		
-		return flag;
+		JSONObject jsonObj = webService.getJson(WebService.LOGIN_URL, params);
+		
+		//String flag = webService.getFromJson(jsonObj, "flag");
+		
+	//	return flag;
 	}
 	
 	@Override
