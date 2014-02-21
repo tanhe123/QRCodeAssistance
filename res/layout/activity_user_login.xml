@@ -5,16 +5,15 @@
     android:layout_height="fill_parent"
     android:background="@drawable/background"
     android:orientation="vertical"
-    android:padding="10dp" >
+    android:padding="25dp" >
 	
 	<TextView
 	    android:layout_width="fill_parent"
 	    android:layout_height="wrap_content"
-	    android:layout_marginTop="30dp"
+	    android:layout_marginTop="20dp"
 	    android:text="@string/loginTitle"
 	    android:textColor="@color/dark"
-	    android:textSize="50sp" 
-	    />
+	    android:textSize="30sp" />
     
 	<TextView
 	    android:layout_width="fill_parent"
@@ -31,7 +30,7 @@
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="10dp"
         android:orientation="horizontal" >
 
         <TextView
@@ -72,30 +71,29 @@
 	<LinearLayout
 	    android:layout_width="fill_parent"
 	    android:layout_height="wrap_content"
-	    android:layout_marginTop="30dp"
+	    android:layout_marginTop="50dp"
 	    android:gravity="right"
 	    android:orientation="horizontal"
 	    android:paddingLeft="30dp" >
 	    
 	    <CheckBox
+	        android:id="@+id/chb_remember"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
-	        android:layout_marginRight="20dp"
+	        android:layout_marginRight="30dp"
 	        android:text="@string/remember"
 	        android:textColor="@color/dark"
-			android:textSize="15sp"  
-	        android:id="@+id/chb_remember"
-	        />
+	        android:textSize="15sp" />
 	    
 	    <Button
+	        android:id="@+id/btn_login"
 	        android:layout_width="100dp"
 	        android:layout_height="wrap_content"
-	        android:layout_marginRight="20dp"
+	        android:layout_marginRight="5dp"
+	        android:background="@drawable/button_selector"
 	        android:text="@string/login"
-	        android:id="@+id/btn_login"
-	        android:textSize="25sp" 
-			android:background="@drawable/button_selector"
-	        />
+	        android:textSize="25sp" />
+
 	</LinearLayout>
     
 </LinearLayout>

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -57,10 +58,15 @@ public class ShowInfoActivity extends Activity{
 			HashMap<String, String> curGroupMap = new HashMap<String, String>();
 			groupData.add(curGroupMap);
 			curGroupMap.put(CATEGORY, labels[i]);
-
 			
-			JSONObject jsonObj = service.getJson(WebService.SERVER_URL + "/" + id + "/" + i);	
+			List<BasicNameValuePair> params = new ArrayList<BasicNameValuePair>();
+			
+			
+			params.add(new BasicNameValuePair("num", id));
+			params.add(new BasicNameValuePair("flag", i+""));
+			
 			try {
+				JSONObject jsonObj = service.getJson(WebService.SERVER_URL, params);	
 				List<HashMap<String, String>> children = service.jsonToList(jsonObj);
 				childData.add(children);
 			} catch (JSONException e) {
@@ -74,6 +80,5 @@ public class ShowInfoActivity extends Activity{
 				R.layout.item, new String[] {
 						"key", "value" }, new int[] { R.id.key, R.id.value });
 		expListView.setAdapter(mAdapter);
-		
 	}
 }
