@@ -55,19 +55,21 @@ public class WebService {
 			client.getParams().setParameter(CoreConnectionPNames.CONNECTION_TIMEOUT, 5000);
 			client.getParams().setParameter(CoreConnectionPNames.SO_TIMEOUT, 10000);
 			
-			
+			Log.i(TAG, "pre execute");
 			
 			HttpResponse httpResponse = client.execute(request); // 发送请求并获取反馈
-			Toast.makeText(context, "ha", Toast.LENGTH_SHORT).show();
 			
-		
+			Log.i(TAG, "after execute");
+			
 			// 解析返回的内容
 			if (httpResponse.getStatusLine().getStatusCode() != 404) {
-				
+				Log.i(TAG,  "pre getcookie");
 				
 				// 获取 Cookie, sessionid
 				List<Cookie> cookie = client.getCookieStore().getCookies();
 	
+				Log.i(TAG, "after getcookie");
+				
 				for (Cookie c : cookie) {
 					if (c.getName().equals("sessionid")) {
 						Log.i(TAG, "" + c.getName() + ":" + c.getValue());
@@ -75,10 +77,14 @@ public class WebService {
 					}
 				}
 				
+				Log.i(TAG, "pre get result");
+				
 				String result = EntityUtils.toString(httpResponse.getEntity());
+				Log.i(TAG, "after getresult");
 				return result;
 			}
 		} catch (Exception e) {
+			Log.i(TAG, "exception");
 			Toast.makeText(context, "连接失败", Toast.LENGTH_SHORT).show();
 		}
 		return null;
@@ -111,9 +117,9 @@ public class WebService {
 	public JSONObject getJson(String url, List<BasicNameValuePair> params) throws JSONException {
 		String content = post(url, params);
 		
-		//JSONObject jsonObj = stringToJson(content);
+		JSONObject jsonObj = stringToJson(content);
 		
-		return null;//jsonObj;
+		return jsonObj;
 	}
 	
 	public JSONObject stringToJson(String content) throws JSONException {

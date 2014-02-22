@@ -1,8 +1,6 @@
 package com.sdutlinux;
 
-// 密码安全问题， 配置文件存取，其实就是读取 xml
- 
-
+import java.nio.channels.AsynchronousCloseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,6 +10,7 @@ import org.json.JSONObject;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -56,10 +55,10 @@ public class UserLogin extends Activity {
 		chb_remember = (CheckBox) findViewById(R.id.chb_remember);
 		
 		if (dataService.getBoolean("remember")) {
-			String userName = dataService.getString("username");
+			String username = dataService.getString("username");
 			String password = dataService.getString("password");
 			
-			edt_userName.setText(userName);
+			edt_userName.setText(username);
 			edt_password.setText(password);
 			
 			chb_remember.setChecked(true);
@@ -69,10 +68,10 @@ public class UserLogin extends Activity {
 		btn_login.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				String userName = edt_userName.getText().toString().trim();
+				String username = edt_userName.getText().toString().trim();
 				String password = edt_password.getText().toString().trim();
 				
-				if (userName.equals("")) {
+				if (username.equals("")) {
 					txt_error.setText("帐号不能为空");
 					txt_error.setVisibility(View.VISIBLE);
 					edt_userName.requestFocus();
@@ -87,65 +86,93 @@ public class UserLogin extends Activity {
 				}
 
 				
-				try {
-					//String result = 
-							login(userName, password);/*
-					if ( ! result.contains("-1") ) {	// 登录成功
-						if (chb_remember.isChecked()) { // 点击了记住密码
-							dataService.saveString("username", userName);
-							dataService.saveString("password", password);
-							dataService.saveBoolean("remember", chb_remember.isChecked());
-							
-							Toast.makeText(getApplicationContext(), "登录成功", Toast.LENGTH_SHORT).show();
-							
-						} else {						// 如果不保存密码
-							dataService.clear();
-						}
-						
-						Intent intent = new Intent(UserLogin.this, QRCodeAssistance.class);
-						intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-						startActivity(intent);
-						
-						// 结束当前的Activity
-						UserLogin.this.finish();
-					} else {							// 登录失败
-						txt_error.setText("帐号或密码错误");
-						txt_error.setVisibility(View.VISIBLE);
-					}*/
-				} catch (JSONException e) {
-					e.printStackTrace();
-				}
+				// 异步post登录
+				new LoginTask(username, password).execute(WebService.LOGIN_URL);
 			}
 		});
 	}
 	
-	/**
-	 * 如果登录成功，返回 类似于 [0,1,2,3,4,5] 这样的字符串
-	 * 如果失败, 返回 [-1]
-	 * @param username
-	 * @param password
-	 * @return 
-	 * @throws JSONException
-	 */
-	public void login(String username, String password) throws JSONException {
-		List<BasicNameValuePair> params = new ArrayList<BasicNameValuePair>();
-		
-		
-		params.add(new BasicNameValuePair("username", username));
-		params.add(new BasicNameValuePair("password", password));
-		
-
-		
-		JSONObject jsonObj = webService.getJson(WebService.LOGIN_URL, params);
-		
-		//String flag = webService.getFromJson(jsonObj, "flag");
-		
-	//	return flag;
-	}
 	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		getMenuInflater().inflate(R.menu.user_login, menu);
 		return true;
+	}
+	
+	class LoginTask extends AsyncTask<String, String, String> {
+		private String username;
+		private String password;
+		
+		public LoginTask(String username, String password) {
+			this.username = username;
+			this.password = password;
+		}
+		
+		protected void onPreExecute() {
+			btn_login.setEnabled(false);
+		}
+		
+		@Override
+		protected String doInBackground(String... params) {
+			List<BasicNameValuePair> postParams = new ArrayList<BasicNameValuePair>();
+			
+			Log.i(TAG, "doInBackground");
+			
+			postParams.add(new BasicNameValuePair("username", username));
+			postParams.add(new BasicNameValuePair("password", password));
+			
+			String url = params[0];
+			
+			Log.i(TAG, url);
+			
+			try {
+				JSONObject jsonObj = webService.getJson(url, postParams);
+				Log.i(TAG, "jsonObj" + jsonObj.toString());
+				String flag = webService.getFromJson(jsonObj, "flag");
+				Log.i(TAG, "flag: " + flag);
+				return flag;
+				
+			} catch (JSONException e) {
+				e.printStackTrace();
+			}
+			
+			return null;
+		}
+		
+		/**
+		 * 如果登录成功，返回 类似于 [0,1,2,3,4,5] 这样的字符串
+		 * 如果失败, 返回 [-1]
+		 */
+		protected void onPostExecute(String result) {
+			btn_login.setEnabled(true);
+			
+			Log.i(TAG, "onPostExecute");
+			
+			if (result == null) {
+				txt_error.setText("登录失败,网络或者解析错误");
+				txt_error.setVisibility(View.VISIBLE);
+			}
+			else if ( ! result.contains("-1") ) {	// 登录成功
+				if (chb_remember.isChecked()) { // 点击了记住密码
+					dataService.saveString("username", username);
+					dataService.saveString("password", password);
+					dataService.saveBoolean("remember", chb_remember.isChecked());
+				} else {						// 如果不保存密码
+					dataService.clear();
+				}
+				
+				Toast.makeText(getApplicationContext(), "登录成功", Toast.LENGTH_SHORT).show();
+				
+				Intent intent = new Intent(UserLogin.this, QRCodeAssistance.class);
+				intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+				startActivity(intent);
+				
+				// 结束当前的Activity
+				UserLogin.this.finish();
+			} else {							// 登录失败
+				txt_error.setText("帐号或密码错误");
+				txt_error.setVisibility(View.VISIBLE);
+			}
+		}
 	}
 }

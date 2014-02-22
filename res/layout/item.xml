@@ -5,7 +5,7 @@
     android:orientation="horizontal" >
     
 	<TextView 
-	    android:layout_width="220dp"
+	    android:layout_width="120dp"
 	    android:layout_height="wrap_content"
 	    android:id="@+id/key"
 	    android:text="key"
