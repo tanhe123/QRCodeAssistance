@@ -9,6 +9,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -84,8 +85,7 @@ public class UserLogin extends Activity {
 					edt_password.requestFocus();
 					return ;
 				}
-
-				
+		
 				// 异步post登录
 				new LoginTask(username, password).execute(WebService.LOGIN_URL);
 			}
@@ -99,6 +99,8 @@ public class UserLogin extends Activity {
 		return true;
 	}
 	
+	private ProgressDialog progressDialog = null;
+	
 	class LoginTask extends AsyncTask<String, String, String> {
 		private String username;
 		private String password;
@@ -109,6 +111,13 @@ public class UserLogin extends Activity {
 		}
 		
 		protected void onPreExecute() {
+			progressDialog = new ProgressDialog(UserLogin.this);
+			progressDialog.setTitle("登录");
+			progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+			progressDialog.setMessage("正在登录,请稍等......");
+			progressDialog.setCancelable(false);
+			progressDialog.show();
+			
 			btn_login.setEnabled(false);
 		}
 		
@@ -170,6 +179,9 @@ public class UserLogin extends Activity {
 				// 结束当前的Activity
 				UserLogin.this.finish();
 			} else {							// 登录失败
+				// progressdialog 取消
+				progressDialog.dismiss();
+				
 				txt_error.setText("帐号或密码错误");
 				txt_error.setVisibility(View.VISIBLE);
 			}
