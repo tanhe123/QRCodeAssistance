@@ -117,6 +117,8 @@ public final class R {
         public static final int exit=0x7f08000f;
         public static final int hello=0x7f080000;
         public static final int hello_world=0x7f080009;
+        public static final int hint_password=0x7f080011;
+        public static final int hint_username=0x7f080010;
         public static final int login=0x7f08000e;
         public static final int loginTitle=0x7f08000c;
         public static final int password=0x7f08000b;
