@@ -45,7 +45,7 @@ public class QRCodeAssistance extends Activity {
 				startActivityForResult(openCameraIntent, 0);		
 			}
 		});
-        
+        s
         btn_exit.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
