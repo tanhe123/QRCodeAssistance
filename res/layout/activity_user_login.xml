@@ -30,7 +30,6 @@
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
         android:orientation="horizontal" >
 
         <TextView
@@ -78,6 +77,16 @@
 	    android:orientation="horizontal"
 	    android:paddingLeft="30dp" >
 	    
+		<CheckBox
+	        android:id="@+id/chb_annonymous"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginRight="10dp"
+	        android:text="@string/anonymous"
+	        android:textColor="@color/dark"
+	        android:textSize="15sp" />
+	    	    
+	    
 	    <CheckBox
 	        android:id="@+id/chb_remember"
 	        android:layout_width="wrap_content"
@@ -86,16 +95,17 @@
 	        android:text="@string/remember"
 	        android:textColor="@color/dark"
 	        android:textSize="15sp" />
-	    
-	    <Button
-	        android:id="@+id/btn_login"
-	        android:layout_width="100dp"
-	        android:layout_height="wrap_content"
-	        android:layout_marginRight="5dp"
-	        android:background="@drawable/button_selector"
-	        android:text="@string/login"
-	        android:textSize="25sp" />
-
 	</LinearLayout>
-    
+
+	<Button
+	    android:id="@+id/btn_login"
+	    android:layout_width="200dp"
+	    android:layout_height="wrap_content"
+	    android:layout_marginLeft="30dp"
+	    android:layout_marginTop="30dp"
+	    android:background="@drawable/button_selector"
+	    android:paddingRight="40dp"
+	    android:text="@string/login"
+	    android:textSize="25sp" />
+
 </LinearLayout>

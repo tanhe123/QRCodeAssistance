@@ -9,6 +9,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -18,6 +19,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -37,6 +39,7 @@ public class UserLogin extends Activity {
 	private Button btn_login;
 	private TextView txt_error;
 	private CheckBox chb_remember;
+	private CheckBox chb_anonymous;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +56,7 @@ public class UserLogin extends Activity {
 		btn_login	 = (Button)	  findViewById(R.id.btn_login);
 		txt_error	 = (TextView) findViewById(R.id.txt_error);
 		chb_remember = (CheckBox) findViewById(R.id.chb_remember);
+		chb_anonymous = (CheckBox) findViewById(R.id.chb_annonymous);
 		
 		if (dataService.getBoolean("remember")) {
 			String username = dataService.getString("username");
@@ -68,36 +72,77 @@ public class UserLogin extends Activity {
 		btn_login.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				String username = edt_userName.getText().toString().trim();
-				String password = edt_password.getText().toString().trim();
 				
-				if (username.equals("")) {
-					txt_error.setText("帐号不能为空");
-					txt_error.setVisibility(View.VISIBLE);
-					edt_userName.requestFocus();
-					return ;
-				}
-				
-				if (password.equals("")) {
-					txt_error.setText("密码不能为空");
-					txt_error.setVisibility(View.VISIBLE);
-					edt_password.requestFocus();
-					return ;
-				}
+				if (chb_anonymous.isChecked()) {		// 匿名登录
+					showProgressDialog();
 
+					loginSucceed();
+				} else {
+					String username = edt_userName.getText().toString().trim();
+					String password = edt_password.getText().toString().trim();
+					
+					if (username.equals("")) {
+						txt_error.setText("帐号不能为空");
+						txt_error.setVisibility(View.VISIBLE);
+						edt_userName.requestFocus();
+						return ;
+					}
+					
+					if (password.equals("")) {
+						txt_error.setText("密码不能为空");
+						txt_error.setVisibility(View.VISIBLE);
+						edt_password.requestFocus();
+						return ;
+					}
 				
-				// 异步post登录
-				new LoginTask(username, password).execute(WebService.LOGIN_URL);
+					// 异步post登录
+					new LoginTask(username, password).execute(WebService.LOGIN_URL);
+				}
+			}
+		});
+		
+		chb_anonymous.setOnCheckedChangeListener(new CheckBox.OnCheckedChangeListener() {
+			@Override
+			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+				if (isChecked) {
+					edt_userName.setEnabled(false);
+					edt_password.setEnabled(false);
+					chb_remember.setEnabled(false);
+				} else {
+					edt_userName.setEnabled(true);
+					edt_password.setEnabled(true);
+					chb_remember.setEnabled(true);
+				}
 			}
 		});
 	}
 	
+	private void showProgressDialog() {
+		progressDialog = new ProgressDialog(UserLogin.this);
+		progressDialog.setTitle("登录");
+		progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+		progressDialog.setMessage("正在登录,请稍等......");
+		progressDialog.setCancelable(false);
+		progressDialog.show();
+	}
 	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		getMenuInflater().inflate(R.menu.user_login, menu);
 		return true;
 	}
+	
+	private void loginSucceed() {
+		Toast.makeText(getApplicationContext(), "登录成功", Toast.LENGTH_SHORT).show();
+		Intent intent = new Intent(UserLogin.this, QRCodeAssistance.class);
+		intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		startActivity(intent);
+		
+		// 结束当前的Activity
+		UserLogin.this.finish();
+	}
+	
+	private ProgressDialog progressDialog = null;
 	
 	class LoginTask extends AsyncTask<String, String, String> {
 		private String username;
@@ -109,7 +154,8 @@ public class UserLogin extends Activity {
 		}
 		
 		protected void onPreExecute() {
-			btn_login.setEnabled(false);
+			showProgressDialog();		// 显示正在登录 progressdialog
+			btn_login.setEnabled(false);	 
 		}
 		
 		@Override
@@ -161,18 +207,16 @@ public class UserLogin extends Activity {
 					dataService.clear();
 				}
 				
-				Toast.makeText(getApplicationContext(), "登录成功", Toast.LENGTH_SHORT).show();
-				
-				Intent intent = new Intent(UserLogin.this, QRCodeAssistance.class);
-				intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-				startActivity(intent);
-				
-				// 结束当前的Activity
-				UserLogin.this.finish();
+				loginSucceed();
 			} else {							// 登录失败
+				// progressdialog 取消
+				progressDialog.dismiss();
+				
 				txt_error.setText("帐号或密码错误");
 				txt_error.setVisibility(View.VISIBLE);
 			}
 		}
 	}
+	
+
 }
