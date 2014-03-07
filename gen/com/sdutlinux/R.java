@@ -111,7 +111,7 @@ public final class R {
     }
     public static final class string {
         public static final int action_settings=0x7f080008;
-        public static final int anonymous=0x7f080010;
+        public static final int anonymous=0x7f080012;
         public static final int app_name=0x7f080001;
         public static final int cancel=0x7f080003;
         public static final int check=0x7f080006;
