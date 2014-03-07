@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
@@ -17,9 +18,21 @@ public class QRCodeAssistance extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // 设置图标
+        this.requestWindowFeature(Window.FEATURE_LEFT_ICON);
         setContentView(R.layout.main);
-		
+        
+		// 设置图标
+        setFeatureDrawableResource(Window.FEATURE_LEFT_ICON, R.drawable.icon);
+        
         SysApplication.getInstance().addActivity(this);
+        
+        // 处理匿名登录
+        Boolean isAnonymous = 
+        		getIntent().getBooleanExtra("anonymous", false);
+        if (isAnonymous) {
+        	setTitle(getTitle() + " [匿名用户]");
+        }
         
         Button btn_scan_barcode = (Button) this.findViewById(R.id.btn_scan_barcode);
         Button btn_check		= (Button) this.findViewById(R.id.btn_check);

@@ -85,7 +85,7 @@ public class UserLogin extends Activity {
 					showProgressDialog();
 
 					loginSucceed();
-				} else {
+				} else {								// 非匿名登录
 					String username = edt_userName.getText().toString().trim();
 					String password = edt_password.getText().toString().trim();
 					
@@ -144,6 +144,12 @@ public class UserLogin extends Activity {
 		Toast.makeText(getApplicationContext(), "登录成功", Toast.LENGTH_SHORT).show();
 		Intent intent = new Intent(UserLogin.this, QRCodeAssistance.class);
 		intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		
+		// 匿名登录
+		if (chb_anonymous.isChecked()) {
+			intent.putExtra("anonymous", true);
+		}
+		
 		startActivity(intent);
 		
 		// 结束当前的Activity
