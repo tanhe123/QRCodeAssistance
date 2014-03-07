@@ -96,16 +96,26 @@
 	        android:textColor="@color/dark"
 	        android:textSize="15sp" />
 	</LinearLayout>
-
-	<Button
-	    android:id="@+id/btn_login"
-	    android:layout_width="200dp"
+	
+	<LinearLayout
+	    android:layout_width="fill_parent"
 	    android:layout_height="wrap_content"
-	    android:layout_marginLeft="30dp"
-	    android:layout_marginTop="30dp"
-	    android:background="@drawable/button_selector"
-	    android:paddingRight="40dp"
-	    android:text="@string/login"
-	    android:textSize="25sp" />
+	    android:layout_marginTop="10dp"
+	    android:gravity="right"
+	    android:orientation="horizontal"
+	    android:padding="10dp" >
+
+		<Button
+		    android:id="@+id/btn_login"
+		    android:layout_width="150dp"
+		    android:layout_height="wrap_content"
+		    android:layout_marginTop="10dp"
+		    android:background="@drawable/button_selector"
+		    android:gravity="center"
+		    android:text="@string/login"
+		    android:textSize="25sp" />
+	    
+	</LinearLayout>
+
 
 </LinearLayout>

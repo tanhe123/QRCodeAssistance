@@ -98,9 +98,10 @@ public final class R {
         public static final int activity_user_login=0x7f030000;
         public static final int camera=0x7f030001;
         public static final int category=0x7f030002;
-        public static final int item=0x7f030003;
-        public static final int main=0x7f030004;
-        public static final int show=0x7f030005;
+        public static final int input_issue=0x7f030003;
+        public static final int item=0x7f030004;
+        public static final int main=0x7f030005;
+        public static final int show=0x7f030006;
     }
     public static final class menu {
         public static final int user_login=0x7f090000;

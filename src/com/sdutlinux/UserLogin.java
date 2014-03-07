@@ -11,12 +11,14 @@ import org.json.JSONObject;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -44,8 +46,14 @@ public class UserLogin extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		// 设置图标
+		this.requestWindowFeature(Window.FEATURE_LEFT_ICON);
+		
 		setContentView(R.layout.activity_user_login);
 		
+		// 设置图标
+		getWindow().setFeatureDrawableResource(Window.FEATURE_LEFT_ICON, R.drawable.icon);
+
 		SysApplication.getInstance().addActivity(this);
 		
 		dataService = new DataService(getApplicationContext());
@@ -217,6 +225,4 @@ public class UserLogin extends Activity {
 			}
 		}
 	}
-	
-
 }
