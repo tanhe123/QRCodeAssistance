@@ -61,41 +61,42 @@ public final class R {
         public static final int navbar=0x7f020006;
     }
     public static final class id {
-        public static final int action_settings=0x7f070020;
+        public static final int action_settings=0x7f070021;
         /**  Messages IDs 
          */
         public static final int auto_focus=0x7f070000;
-        public static final int btn_cancel_scan=0x7f070017;
-        public static final int btn_check=0x7f07001c;
-        public static final int btn_exit=0x7f07001d;
-        public static final int btn_login=0x7f070014;
-        public static final int btn_scan_barcode=0x7f07001b;
-        public static final int category=0x7f070018;
-        public static final int chb_annonymous=0x7f070012;
-        public static final int chb_remember=0x7f070013;
+        public static final int btn_cancel_scan=0x7f070018;
+        public static final int btn_check=0x7f07001d;
+        public static final int btn_exit=0x7f07001e;
+        public static final int btn_login=0x7f070015;
+        public static final int btn_scan_barcode=0x7f07001c;
+        public static final int category=0x7f070019;
+        public static final int chb_annonymous=0x7f070013;
+        public static final int chb_remember=0x7f070014;
         public static final int decode=0x7f070001;
         public static final int decode_failed=0x7f070002;
         public static final int decode_succeeded=0x7f070003;
-        public static final int edt_issue_desc=0x7f07000e;
-        public static final int edt_issue_title=0x7f07000d;
-        public static final int edt_password=0x7f070011;
-        public static final int edt_username=0x7f070010;
+        public static final int edt_issue_desc=0x7f07000f;
+        public static final int edt_issue_title=0x7f07000c;
+        public static final int edt_password=0x7f070012;
+        public static final int edt_username=0x7f070011;
         public static final int encode_failed=0x7f070004;
         public static final int encode_succeeded=0x7f070005;
-        public static final int expListView=0x7f07001f;
-        public static final int key=0x7f070019;
+        public static final int expListView=0x7f070020;
+        public static final int input=0x7f07000e;
+        public static final int key=0x7f07001a;
         public static final int launch_product_query=0x7f070006;
-        public static final int nameTxt=0x7f07001e;
-        public static final int preview_view=0x7f070015;
+        public static final int nameTxt=0x7f07001f;
+        public static final int preview_view=0x7f070016;
         public static final int quit=0x7f070007;
         public static final int restart_preview=0x7f070008;
         public static final int return_scan_result=0x7f070009;
         public static final int search_book_contents_failed=0x7f07000a;
         public static final int search_book_contents_succeeded=0x7f07000b;
-        public static final int sp_teachers=0x7f07000c;
-        public static final int txt_error=0x7f07000f;
-        public static final int value=0x7f07001a;
-        public static final int viewfinder_view=0x7f070016;
+        public static final int sp_teachers=0x7f07000d;
+        public static final int txt_error=0x7f070010;
+        public static final int value=0x7f07001b;
+        public static final int viewfinder_view=0x7f070017;
     }
     public static final class layout {
         public static final int activity_input_issue=0x7f030000;
@@ -115,6 +116,7 @@ public final class R {
         public static final int realm_properties=0x7f040001;
     }
     public static final class string {
+        public static final int acount_or_password_wrong=0x7f080016;
         public static final int action_settings=0x7f080008;
         public static final int anonymous=0x7f080012;
         public static final int app_name=0x7f080001;
@@ -126,6 +128,8 @@ public final class R {
         public static final int hello_world=0x7f080009;
         public static final int hint_password=0x7f080011;
         public static final int hint_username=0x7f080010;
+        public static final int input_issue=0x7f080017;
+        public static final int input_to=0x7f080018;
         public static final int issue_desc=0x7f080014;
         public static final int issue_title=0x7f080013;
         public static final int login=0x7f08000e;
