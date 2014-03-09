@@ -15,7 +15,6 @@ public class InputIssue extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_input_issue);
 		
-		
 	}
 
 	@Override
