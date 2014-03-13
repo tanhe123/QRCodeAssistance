@@ -58,7 +58,9 @@ public final class R {
         public static final int button_unpressed=0x7f020003;
         public static final int ic_launcher=0x7f020004;
         public static final int icon=0x7f020005;
-        public static final int navbar=0x7f020006;
+        public static final int logout=0x7f020006;
+        public static final int navbar=0x7f020007;
+        public static final int scan=0x7f020008;
     }
     public static final class id {
         public static final int action_settings=0x7f070020;
@@ -104,11 +106,12 @@ public final class R {
         public static final int category=0x7f030003;
         public static final int item=0x7f030004;
         public static final int main=0x7f030005;
-        public static final int show=0x7f030006;
+        public static final int main_item=0x7f030006;
+        public static final int show=0x7f030007;
     }
     public static final class menu {
-        public static final int input_issue=0x7f090000;
-        public static final int user_login=0x7f090001;
+        public static final int input_issue=0x7f0a0000;
+        public static final int user_login=0x7f0a0001;
     }
     public static final class raw {
         public static final int beep=0x7f040000;
@@ -137,5 +140,8 @@ public final class R {
         public static final int title_activity_input_issue=0x7f080015;
         public static final int title_activity_user_login=0x7f080007;
         public static final int username=0x7f08000a;
+    }
+    public static final class style {
+        public static final int MyTheme=0x7f090000;
     }
 }
