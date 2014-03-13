@@ -20,7 +20,7 @@
 	    android:layout_height="wrap_content"
 	    android:layout_marginTop="20dp"
 	    android:gravity="center"
-	    android:text="帐号或密码错误"
+	    android:text="@string/acount_or_password_wrong"
 	    android:textColor="@color/red"
 	    android:textSize="25sp" 
 	    android:id="@+id/txt_error"

@@ -15,6 +15,8 @@ import com.zxing.activity.CaptureActivity;
 public class QRCodeAssistance extends Activity {
     private static final String TAG = "QRCodeAssistancetest";
 		
+    private boolean isAnonymous;
+    
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,7 +30,7 @@ public class QRCodeAssistance extends Activity {
         SysApplication.getInstance().addActivity(this);
         
         // 处理匿名登录
-        Boolean isAnonymous = 
+        isAnonymous = 
         		getIntent().getBooleanExtra("anonymous", false);
         if (isAnonymous) {
         	setTitle(getTitle() + " [匿名用户]");
@@ -43,6 +45,15 @@ public class QRCodeAssistance extends Activity {
 			public void onClick(View v) {
 				Intent openCameraIntent = new Intent(QRCodeAssistance.this,CaptureActivity.class);
 				startActivityForResult(openCameraIntent, 0);		
+			}
+		});
+        
+        btn_check.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				Intent intent = new Intent(QRCodeAssistance.this, InputIssue.class);
+				startActivity(intent);
 			}
 		});
         
