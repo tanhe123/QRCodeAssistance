@@ -12,7 +12,6 @@
 	    android:layout_height="wrap_content"
 	    android:layout_marginTop="20dp"
 	    android:text="@string/loginTitle"
-	    android:textColor="@color/dark"
 	    android:textSize="30sp" />
     
 	<TextView
@@ -36,7 +35,6 @@
 	        android:layout_width="80dp"
 	        android:layout_height="wrap_content"
 	        android:text="@string/username"
-	        android:textColor="@color/dark"
 	        android:textSize="22sp" />
     
 	    <EditText
@@ -83,7 +81,6 @@
 	        android:layout_height="wrap_content"
 	        android:layout_marginRight="10dp"
 	        android:text="@string/anonymous"
-	        android:textColor="@color/dark"
 	        android:textSize="15sp" />
 	    	    
 	    
@@ -93,7 +90,6 @@
 	        android:layout_height="wrap_content"
 	        android:layout_marginRight="30dp"
 	        android:text="@string/remember"
-	        android:textColor="@color/dark"
 	        android:textSize="15sp" />
 	</LinearLayout>
 	

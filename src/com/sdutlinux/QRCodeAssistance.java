@@ -7,15 +7,20 @@ import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.View.OnClickListener;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.GridView;
 
+import com.sdutlinux.adapter.MainUIAdapter;
 import com.sdutlinux.service.SysApplication;
 import com.zxing.activity.CaptureActivity;
 
-public class QRCodeAssistance extends Activity {
+public class QRCodeAssistance extends Activity implements OnItemClickListener{
     private static final String TAG = "QRCodeAssistancetest";
 		
     private boolean isAnonymous;
+    private GridView gridView;
     
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -36,10 +41,15 @@ public class QRCodeAssistance extends Activity {
         	setTitle(getTitle() + " [匿名用户]");
         }
         
-        Button btn_scan_barcode = (Button) this.findViewById(R.id.btn_scan_barcode);
-        Button btn_check		= (Button) this.findViewById(R.id.btn_check);
-        Button btn_exit			= (Button) this.findViewById(R.id.btn_exit);
+        gridView = (GridView) this.findViewById(R.id.gv_main);
+        gridView.setAdapter(new MainUIAdapter(this));
+        gridView.setOnItemClickListener(this);
+       
         
+       /* Button btn_scan_barcode = (Button) this.findViewById(R.id.btn_scan_barcode);
+        Button btn_check		= (Button) this.findViewById(R.id.btn_check);
+        Button btn_exit			= (Button) this.findViewById(R.id.btn_exit);*/
+        /*
         btn_scan_barcode.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -62,9 +72,28 @@ public class QRCodeAssistance extends Activity {
 			public void onClick(View arg0) {
 				SysApplication.getInstance().exit();
 			}
-		});
+		});*/
     }
 
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+    	switch (position) {
+		case 0:			// 扫描
+			Intent openCameraIntent = new Intent(QRCodeAssistance.this,CaptureActivity.class);
+			startActivityForResult(openCameraIntent, 0);		
+			break;
+		case 1:			// 注销
+			Intent intent = new Intent(QRCodeAssistance.this, InputIssue.class);
+			startActivity(intent);
+			break;
+		case 2: 		// 退出
+			SysApplication.getInstance().exit();
+			break;
+		default:
+			break;
+		}
+    }
+    
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
