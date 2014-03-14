@@ -36,13 +36,25 @@ public class SysApplication extends Application {
             for (Activity activity : mList) { 
                 if (activity != null) 
                     activity.finish(); 
-            } 
+            }
         } catch (Exception e) { 
             e.printStackTrace(); 
         } finally { 
             System.exit(0); 
         } 
     } 
+    
+    /**
+     * 关掉除 activity 的所有 activity
+     * @param act
+     */
+    public void exit(Activity act) {
+    	for (Activity activity : mList) { 
+            if (activity != null && activity != act) 
+                activity.finish(); 
+        }
+    }
+    
     public void onLowMemory() { 
         super.onLowMemory();     
         System.gc(); 

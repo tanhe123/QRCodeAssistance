@@ -51,6 +51,9 @@ public class UserLogin extends Activity {
 		
 		setContentView(R.layout.activity_user_login);
 		
+		// 如果注销到当前界面，就关掉所有其他的 Activity
+		SysApplication.getInstance().exit(this);
+		
 		// 设置图标
 		getWindow().setFeatureDrawableResource(Window.FEATURE_LEFT_ICON, R.drawable.icon);
 

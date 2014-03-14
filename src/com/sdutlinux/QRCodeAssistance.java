@@ -45,34 +45,6 @@ public class QRCodeAssistance extends Activity implements OnItemClickListener{
         gridView.setAdapter(new MainUIAdapter(this));
         gridView.setOnItemClickListener(this);
        
-        
-       /* Button btn_scan_barcode = (Button) this.findViewById(R.id.btn_scan_barcode);
-        Button btn_check		= (Button) this.findViewById(R.id.btn_check);
-        Button btn_exit			= (Button) this.findViewById(R.id.btn_exit);*/
-        /*
-        btn_scan_barcode.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				Intent openCameraIntent = new Intent(QRCodeAssistance.this,CaptureActivity.class);
-				startActivityForResult(openCameraIntent, 0);		
-			}
-		});
-        
-        btn_check.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View arg0) {
-				Intent intent = new Intent(QRCodeAssistance.this, InputIssue.class);
-				startActivity(intent);
-			}
-		});
-        
-        btn_exit.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View arg0) {
-				SysApplication.getInstance().exit();
-			}
-		});*/
     }
 
     @Override
@@ -83,7 +55,8 @@ public class QRCodeAssistance extends Activity implements OnItemClickListener{
 			startActivityForResult(openCameraIntent, 0);		
 			break;
 		case 1:			// 注销
-			Intent intent = new Intent(QRCodeAssistance.this, InputIssue.class);
+			Intent intent = new Intent(QRCodeAssistance.this, UserLogin.class);
+			intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			startActivity(intent);
 			break;
 		case 2: 		// 退出
