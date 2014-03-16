@@ -68,7 +68,7 @@ public final class R {
         public static final int title_background=0x7f02000d;
     }
     public static final class id {
-        public static final int action_settings=0x7f070021;
+        public static final int action_settings=0x7f070022;
         /**  Messages IDs 
          */
         public static final int auto_focus=0x7f070000;
@@ -86,13 +86,14 @@ public final class R {
         public static final int edt_username=0x7f070011;
         public static final int encode_failed=0x7f070004;
         public static final int encode_succeeded=0x7f070005;
-        public static final int expListView=0x7f070020;
-        public static final int gv_main=0x7f07001c;
+        public static final int expListView=0x7f070021;
+        public static final int gv_main=0x7f07001d;
         public static final int input=0x7f07000e;
-        public static final int iv_main_icon=0x7f07001d;
+        public static final int iv_main_icon=0x7f07001e;
         public static final int key=0x7f07001a;
         public static final int launch_product_query=0x7f070006;
-        public static final int nameTxt=0x7f07001f;
+        public static final int ll_main=0x7f07001c;
+        public static final int nameTxt=0x7f070020;
         public static final int preview_view=0x7f070016;
         public static final int quit=0x7f070007;
         public static final int restart_preview=0x7f070008;
@@ -100,7 +101,7 @@ public final class R {
         public static final int search_book_contents_failed=0x7f07000a;
         public static final int search_book_contents_succeeded=0x7f07000b;
         public static final int sp_teachers=0x7f07000d;
-        public static final int tv_main_name=0x7f07001e;
+        public static final int tv_main_name=0x7f07001f;
         public static final int txt_error=0x7f070010;
         public static final int value=0x7f07001b;
         public static final int viewfinder_view=0x7f070017;

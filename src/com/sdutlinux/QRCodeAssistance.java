@@ -7,10 +7,12 @@ import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.View.OnClickListener;
+import android.view.animation.AlphaAnimation;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
+import android.widget.LinearLayout;
 
 import com.sdutlinux.adapter.MainUIAdapter;
 import com.sdutlinux.service.SysApplication;
@@ -21,6 +23,7 @@ public class QRCodeAssistance extends Activity implements OnItemClickListener{
 		
     private boolean isAnonymous;
     private GridView gridView;
+    private LinearLayout ll;
     
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -45,6 +48,11 @@ public class QRCodeAssistance extends Activity implements OnItemClickListener{
         gridView.setAdapter(new MainUIAdapter(this));
         gridView.setOnItemClickListener(this);
        
+        // 淡入淡出效果
+        ll = (LinearLayout) this.findViewById(R.id.ll_main);
+		AlphaAnimation alphaAnimation = new AlphaAnimation(0.0f, 1.0f);
+		alphaAnimation.setDuration(1000);
+		ll.startAnimation(alphaAnimation);
     }
 
     @Override
