@@ -62,12 +62,18 @@ public class QRCodeAssistance extends Activity implements OnItemClickListener{
 			Intent openCameraIntent = new Intent(QRCodeAssistance.this,CaptureActivity.class);
 			startActivityForResult(openCameraIntent, 0);		
 			break;
-		case 1:			// 注销
+		case 1:			// 历史
+			
+			break;
+		case 2:			// 备忘
+			
+			break;
+		case 3:			// 注销
 			Intent intent = new Intent(QRCodeAssistance.this, UserLogin.class);
 			intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			startActivity(intent);
 			break;
-		case 2: 		// 退出
+		case 4: 		// 退出
 			SysApplication.getInstance().exit();
 			break;
 		default:
@@ -80,7 +86,7 @@ public class QRCodeAssistance extends Activity implements OnItemClickListener{
 		super.onActivityResult(requestCode, resultCode, data);
 		
 		//处理扫描结果（在界面上显示）
-//		if (resultCode == RESULT_OK) {
+		if (resultCode == RESULT_OK) {
 //			Bundle result = data.getExtras();
 //			String scanResult = result.getString("result");
 		
@@ -97,6 +103,6 @@ public class QRCodeAssistance extends Activity implements OnItemClickListener{
 			Intent intent = new Intent(QRCodeAssistance.this, ShowInfoActivity.class);
 			intent.putExtras(bundle);
 			startActivity(intent);																																																																													
-//		}									
+		} 
 	}
 }

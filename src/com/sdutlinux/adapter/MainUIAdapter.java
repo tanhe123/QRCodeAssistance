@@ -2,6 +2,7 @@ package com.sdutlinux.adapter;
 
 import com.sdutlinux.R;
 
+import android.R.raw;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 
 public class MainUIAdapter extends BaseAdapter {
 
+	
 	private LayoutInflater inflater;
 	private Context context;
 	
@@ -21,11 +23,11 @@ public class MainUIAdapter extends BaseAdapter {
 	}
 	
 	private static final String[] NAMES = new String[] {
-		"扫描", "注销", "退出"
+		"扫描", "历史", "备忘", "注销", "退出"
 	};
 	
 	private static final int[] ICONS = new int[] {
-		R.drawable.scan, R.drawable.a1118307, R.drawable.logout
+		R.drawable.scan, R.drawable.history, R.drawable.note, R.drawable.logout, R.drawable.exit
 	};
 	
 	@Override
