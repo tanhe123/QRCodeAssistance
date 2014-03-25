@@ -25,7 +25,7 @@ public class MainUIAdapter extends BaseAdapter {
 	};
 	
 	private static final int[] ICONS = new int[] {
-		R.drawable.scan, R.drawable.logout, R.drawable.logout
+		R.drawable.scan, R.drawable.a1118307, R.drawable.logout
 	};
 	
 	@Override

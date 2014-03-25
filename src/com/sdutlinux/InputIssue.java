@@ -96,8 +96,6 @@ public class InputIssue extends Activity {
 				break;
 			}
 		}
-
-
 	};
 	
 	private void showProgressDialog() {
