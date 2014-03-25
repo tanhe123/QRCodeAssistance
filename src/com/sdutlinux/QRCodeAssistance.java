@@ -31,7 +31,7 @@ public class QRCodeAssistance extends Activity implements OnItemClickListener{
         // 设置图标
         this.requestWindowFeature(Window.FEATURE_LEFT_ICON);
         setContentView(R.layout.main);
-        
+
 		// 设置图标
         setFeatureDrawableResource(Window.FEATURE_LEFT_ICON, R.drawable.icon);
         
@@ -80,7 +80,7 @@ public class QRCodeAssistance extends Activity implements OnItemClickListener{
 		super.onActivityResult(requestCode, resultCode, data);
 		
 		//处理扫描结果（在界面上显示）
-//		if (resultCode == RESULT_OK) {
+		if (resultCode == RESULT_OK) {
 //			Bundle result = data.getExtras();
 //			String scanResult = result.getString("result");
 		
@@ -97,6 +97,6 @@ public class QRCodeAssistance extends Activity implements OnItemClickListener{
 			Intent intent = new Intent(QRCodeAssistance.this, ShowInfoActivity.class);
 			intent.putExtras(bundle);
 			startActivity(intent);																																																																													
-//		}									
+		}									
 	}
 }
