@@ -103,6 +103,10 @@ public class QRCodeAssistance extends Activity implements OnItemClickListener{
 			Intent intent = new Intent(QRCodeAssistance.this, ShowInfoActivity.class);
 			intent.putExtras(bundle);
 			startActivity(intent);																																																																													
+<<<<<<< HEAD
 		} 
+=======
+		}									
+>>>>>>> tmp
 	}
 }
