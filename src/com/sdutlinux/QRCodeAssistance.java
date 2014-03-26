@@ -66,12 +66,13 @@ public class QRCodeAssistance extends Activity implements OnItemClickListener{
 			
 			break;
 		case 2:			// 备忘
-			
+			Intent noteIntent = new Intent(this, NoteActivity.class);
+			startActivity(noteIntent);
 			break;
 		case 3:			// 注销
-			Intent intent = new Intent(QRCodeAssistance.this, UserLogin.class);
-			intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-			startActivity(intent);
+			Intent logoutIntent = new Intent(QRCodeAssistance.this, UserLogin.class);
+			logoutIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+			startActivity(logoutIntent);
 			break;
 		case 4: 		// 退出
 			SysApplication.getInstance().exit();

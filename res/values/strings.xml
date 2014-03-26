@@ -23,7 +23,10 @@
     <string name="issue_title">问题简述</string>
     <string name="issue_desc">问题详细信息</string>
     <string name="title_activity_input_issue">InputIssue</string>
-	<string name="acount_or_password_wrong">帐号或密码错误</string>
-	<string name="input_issue">提交</string>
-	<string name="input_to">\@</string>
+    <string name="acount_or_password_wrong">帐号或密码错误</string>
+    <string name="input_issue">提交</string>
+    <string name="input_to">\@</string>
+    <string name="title_activity_note">NoteActivity</string>
+    <string name="title_activity_note_edit">NoteEditActivity</string>
+
 </resources>
