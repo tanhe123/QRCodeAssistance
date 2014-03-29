@@ -4,9 +4,12 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.content.SharedPreferences.Editor;
 import android.view.Menu;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 
 public class InputIssue extends Activity {
@@ -15,6 +18,8 @@ public class InputIssue extends Activity {
 	private String[] teachers;
 	private Thread initSpinnerThread;
 	private ProgressDialog progressDialog;
+	private Button bt_input, bt_cancel;
+	
 	
 	private static final int START = 1;
 	private static final int OVER = 2;
@@ -25,8 +30,26 @@ public class InputIssue extends Activity {
 		setContentView(R.layout.activity_input_issue);
 		
 		sp_teachers = (Spinner) this.findViewById(R.id.sp_teachers);
+		bt_input	= (Button) this.findViewById(R.id.bt_input);
+		bt_cancel	= (Button) this.findViewById(R.id.bt_cancel);
 		
 		initSpinnerTeachers();
+		
+		bt_cancel.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+				// 提交问题记录
+			}
+		});
+		
+		bt_cancel.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+				Intent intent = new Intent(InputIssue.this, QRCodeAssistance.class);
+				startActivity(intent);
+				finish();
+			}
+		});
 	}
 
 	@Override

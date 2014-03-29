@@ -20,7 +20,7 @@ import com.zxing.activity.CaptureActivity;
 
 public class QRCodeAssistance extends Activity implements OnItemClickListener{
     private static final String TAG = "QRCodeAssistancetest";
-		
+
     private boolean isAnonymous;
     private GridView gridView;
     private LinearLayout ll;

@@ -1,6 +1,5 @@
 package com.sdutlinux;
 
-import java.nio.channels.AsynchronousCloseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,7 +10,6 @@ import org.json.JSONObject;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -46,9 +44,9 @@ public class UserLogin extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+//		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		// 设置图标
 		this.requestWindowFeature(Window.FEATURE_LEFT_ICON);
-		
 		setContentView(R.layout.activity_user_login);
 		
 		// 如果注销到当前界面，就关掉所有其他的 Activity

@@ -131,8 +131,9 @@ public final class R {
         /**  Messages IDs 
          */
         public static final int auto_focus=0x7f070000;
-        public static final int bt_cancel=0x7f070013;
-        public static final int bt_new=0x7f070011;
+        public static final int bt_cancel=0x7f07000c;
+        public static final int bt_input=0x7f07000d;
+        public static final int bt_new=0x7f070012;
         public static final int bt_save=0x7f070014;
         public static final int btn_cancel_scan=0x7f07001e;
         public static final int btn_login=0x7f07001b;
@@ -142,8 +143,8 @@ public final class R {
         public static final int decode=0x7f070001;
         public static final int decode_failed=0x7f070002;
         public static final int decode_succeeded=0x7f070003;
-        public static final int edt_issue_desc=0x7f07000f;
-        public static final int edt_issue_title=0x7f07000c;
+        public static final int edt_issue_desc=0x7f070010;
+        public static final int edt_issue_title=0x7f07000e;
         public static final int edt_password=0x7f070018;
         public static final int edt_username=0x7f070017;
         public static final int encode_failed=0x7f070004;
@@ -151,11 +152,10 @@ public final class R {
         public static final int et_content=0x7f070015;
         public static final int expListView=0x7f070028;
         public static final int gv_main=0x7f070023;
-        public static final int input=0x7f07000e;
         public static final int iv_main_icon=0x7f070024;
         public static final int key=0x7f070020;
         public static final int launch_product_query=0x7f070006;
-        public static final int listView=0x7f070012;
+        public static final int listView=0x7f070013;
         public static final int ll_main=0x7f070022;
         public static final int nameTxt=0x7f070027;
         public static final int preview_view=0x7f07001c;
@@ -164,8 +164,8 @@ public final class R {
         public static final int return_scan_result=0x7f070009;
         public static final int search_book_contents_failed=0x7f07000a;
         public static final int search_book_contents_succeeded=0x7f07000b;
-        public static final int sp_teachers=0x7f07000d;
-        public static final int tv_list_size=0x7f070010;
+        public static final int sp_teachers=0x7f07000f;
+        public static final int tv_list_size=0x7f070011;
         public static final int tv_main_name=0x7f070025;
         public static final int tv_title=0x7f070026;
         public static final int txt_error=0x7f070016;
