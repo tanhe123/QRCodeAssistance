@@ -173,23 +173,27 @@ public final class R {
         public static final int viewfinder_view=0x7f07001d;
     }
     public static final class layout {
-        public static final int activity_input_issue=0x7f030000;
-        public static final int activity_note=0x7f030001;
-        public static final int activity_note_edit=0x7f030002;
-        public static final int activity_user_login=0x7f030003;
-        public static final int camera=0x7f030004;
-        public static final int category=0x7f030005;
-        public static final int item=0x7f030006;
-        public static final int main=0x7f030007;
-        public static final int main_item=0x7f030008;
-        public static final int note_item=0x7f030009;
-        public static final int show=0x7f03000a;
+        public static final int activity_basic_info=0x7f030000;
+        public static final int activity_input_issue=0x7f030001;
+        public static final int activity_issue_info=0x7f030002;
+        public static final int activity_note=0x7f030003;
+        public static final int activity_note_edit=0x7f030004;
+        public static final int activity_user_login=0x7f030005;
+        public static final int camera=0x7f030006;
+        public static final int category=0x7f030007;
+        public static final int item=0x7f030008;
+        public static final int main=0x7f030009;
+        public static final int main_item=0x7f03000a;
+        public static final int note_item=0x7f03000b;
+        public static final int show=0x7f03000c;
     }
     public static final class menu {
-        public static final int input_issue=0x7f0a0000;
-        public static final int note=0x7f0a0001;
-        public static final int note_edit=0x7f0a0002;
-        public static final int user_login=0x7f0a0003;
+        public static final int basic_info=0x7f0a0000;
+        public static final int input_issue=0x7f0a0001;
+        public static final int issue_info=0x7f0a0002;
+        public static final int note=0x7f0a0003;
+        public static final int note_edit=0x7f0a0004;
+        public static final int user_login=0x7f0a0005;
     }
     public static final class raw {
         public static final int beep=0x7f040000;
@@ -218,7 +222,9 @@ public final class R {
         public static final int remember=0x7f08000d;
         public static final int save=0x7f080005;
         public static final int scan=0x7f080004;
+        public static final int title_activity_basic_info=0x7f08001b;
         public static final int title_activity_input_issue=0x7f080015;
+        public static final int title_activity_issue_info=0x7f08001c;
         public static final int title_activity_note=0x7f080019;
         public static final int title_activity_note_edit=0x7f08001a;
         public static final int title_activity_user_login=0x7f080007;

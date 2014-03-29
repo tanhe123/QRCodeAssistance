@@ -28,5 +28,7 @@
     <string name="input_to">\@</string>
     <string name="title_activity_note">NoteActivity</string>
     <string name="title_activity_note_edit">NoteEditActivity</string>
+    <string name="title_activity_basic_info">BasicInfoActivity</string>
+    <string name="title_activity_issue_info">IssueInfoActivity</string>
 
 </resources>

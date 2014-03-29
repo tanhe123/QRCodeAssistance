@@ -12,7 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 
-public class InputIssue extends Activity {
+public class InputIssueActivity extends Activity {
 	private Spinner sp_teachers;
 	private Editor edt_title, edt_desc;
 	private String[] teachers;
@@ -45,7 +45,7 @@ public class InputIssue extends Activity {
 		bt_cancel.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
-				Intent intent = new Intent(InputIssue.this, QRCodeAssistance.class);
+				Intent intent = new Intent(InputIssueActivity.this, QRCodeAssistance.class);
 				startActivity(intent);
 				finish();
 			}
