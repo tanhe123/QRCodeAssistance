@@ -119,58 +119,62 @@ public final class R {
         public static final int tab_bar_cancel_selector=0x7f020040;
         public static final int tab_bar_new_selector=0x7f020041;
         public static final int tab_bar_save_selector=0x7f020042;
-        public static final int tabbar_close_default=0x7f020043;
-        public static final int tabbar_close_pressed=0x7f020044;
-        public static final int tabbar_pen_default=0x7f020045;
-        public static final int tabbar_pen_pressed=0x7f020046;
-        public static final int text_background=0x7f020047;
-        public static final int title_background=0x7f020048;
+        public static final int tabbar_bg_nor=0x7f020043;
+        public static final int tabbar_bg_press=0x7f020044;
+        public static final int tabbar_bg_selector=0x7f020045;
+        public static final int tabbar_close_default=0x7f020046;
+        public static final int tabbar_close_pressed=0x7f020047;
+        public static final int tabbar_pen_default=0x7f020048;
+        public static final int tabbar_pen_pressed=0x7f020049;
+        public static final int text_background=0x7f02004a;
+        public static final int title_background=0x7f02004b;
     }
     public static final class id {
-        public static final int action_settings=0x7f070029;
+        public static final int action_settings=0x7f07002a;
         /**  Messages IDs 
          */
         public static final int auto_focus=0x7f070000;
-        public static final int bt_cancel=0x7f07000c;
-        public static final int bt_input=0x7f07000d;
-        public static final int bt_new=0x7f070012;
-        public static final int bt_save=0x7f070014;
-        public static final int btn_cancel_scan=0x7f07001e;
-        public static final int btn_login=0x7f07001b;
-        public static final int category=0x7f07001f;
-        public static final int chb_annonymous=0x7f070019;
-        public static final int chb_remember=0x7f07001a;
+        public static final int bt_cancel=0x7f07000e;
+        public static final int bt_input=0x7f07000f;
+        public static final int bt_new=0x7f070014;
+        public static final int bt_save=0x7f070016;
+        public static final int btn_cancel_scan=0x7f070021;
+        public static final int btn_login=0x7f07001e;
+        public static final int category=0x7f070022;
+        public static final int chb_annonymous=0x7f07001c;
+        public static final int chb_remember=0x7f07001d;
         public static final int decode=0x7f070001;
         public static final int decode_failed=0x7f070002;
         public static final int decode_succeeded=0x7f070003;
-        public static final int edt_issue_desc=0x7f070010;
-        public static final int edt_issue_title=0x7f07000e;
-        public static final int edt_password=0x7f070018;
-        public static final int edt_username=0x7f070017;
+        public static final int edt_issue_desc=0x7f070012;
+        public static final int edt_issue_title=0x7f070010;
+        public static final int edt_password=0x7f07001b;
+        public static final int edt_username=0x7f07001a;
         public static final int encode_failed=0x7f070004;
         public static final int encode_succeeded=0x7f070005;
-        public static final int et_content=0x7f070015;
-        public static final int expListView=0x7f070028;
-        public static final int gv_main=0x7f070023;
-        public static final int iv_main_icon=0x7f070024;
-        public static final int key=0x7f070020;
+        public static final int et_content=0x7f070017;
+        public static final int expListView=0x7f07000d;
+        public static final int gv_main=0x7f070026;
+        public static final int iv_main_icon=0x7f070027;
+        public static final int key=0x7f070023;
         public static final int launch_product_query=0x7f070006;
-        public static final int listView=0x7f070013;
-        public static final int ll_main=0x7f070022;
-        public static final int nameTxt=0x7f070027;
-        public static final int preview_view=0x7f07001c;
+        public static final int listView=0x7f070015;
+        public static final int ll_main=0x7f070025;
+        public static final int nameTxt=0x7f07000c;
+        public static final int preview_view=0x7f07001f;
         public static final int quit=0x7f070007;
+        public static final int radio_group=0x7f070018;
         public static final int restart_preview=0x7f070008;
         public static final int return_scan_result=0x7f070009;
         public static final int search_book_contents_failed=0x7f07000a;
         public static final int search_book_contents_succeeded=0x7f07000b;
-        public static final int sp_teachers=0x7f07000f;
-        public static final int tv_list_size=0x7f070011;
-        public static final int tv_main_name=0x7f070025;
-        public static final int tv_title=0x7f070026;
-        public static final int txt_error=0x7f070016;
-        public static final int value=0x7f070021;
-        public static final int viewfinder_view=0x7f07001d;
+        public static final int sp_teachers=0x7f070011;
+        public static final int tv_list_size=0x7f070013;
+        public static final int tv_main_name=0x7f070028;
+        public static final int tv_title=0x7f070029;
+        public static final int txt_error=0x7f070019;
+        public static final int value=0x7f070024;
+        public static final int viewfinder_view=0x7f070020;
     }
     public static final class layout {
         public static final int activity_basic_info=0x7f030000;
@@ -178,14 +182,14 @@ public final class R {
         public static final int activity_issue_info=0x7f030002;
         public static final int activity_note=0x7f030003;
         public static final int activity_note_edit=0x7f030004;
-        public static final int activity_user_login=0x7f030005;
-        public static final int camera=0x7f030006;
-        public static final int category=0x7f030007;
-        public static final int item=0x7f030008;
-        public static final int main=0x7f030009;
-        public static final int main_item=0x7f03000a;
-        public static final int note_item=0x7f03000b;
-        public static final int show=0x7f03000c;
+        public static final int activity_show_info=0x7f030005;
+        public static final int activity_user_login=0x7f030006;
+        public static final int camera=0x7f030007;
+        public static final int category=0x7f030008;
+        public static final int item=0x7f030009;
+        public static final int main=0x7f03000a;
+        public static final int main_item=0x7f03000b;
+        public static final int note_item=0x7f03000c;
     }
     public static final class menu {
         public static final int basic_info=0x7f0a0000;
@@ -246,5 +250,6 @@ public final class R {
  All customizations that are NOT specific to a particular API-level can go here. 
          */
         public static final int AppTheme=0x7f090001;
+        public static final int tab_btn=0x7f090002;
     }
 }
