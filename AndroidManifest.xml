@@ -50,12 +50,11 @@
         <activity
             android:name="com.sdutlinux.NoteActivity"
             android:label="@string/title_activity_note" >
-        </activity>
-   <!--      <activity
-            android:name="com.sdutlinux.NoteEditActivity"
-            android:label="@string/title_activity_note_edit" >
-        </activity>-->
-    	
+        </activity>	
+        <activity
+            android:name="com.sdutlinux.NoteEditActivity">
+        </activity>	
+        
         
          <uses-library android:name="android.test.runner" />
     </application>
