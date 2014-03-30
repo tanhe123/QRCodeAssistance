@@ -38,20 +38,22 @@
                 android:background="@drawable/tabbar_bg_nor"
                 >
                 <RadioButton 
+                    android:id="@+id/rb_basic_info"
                     style="@style/tab_btn"
                     android:text="基本信息"
                     android:checked="true"
                     />
                 <RadioButton 
+                    android:id="@+id/rb_issue_info"
                     style="@style/tab_btn"
                     android:text="维修记录"
                     />
                 <RadioButton 
+                    android:id="@+id/rb_input_issue"
                     style="@style/tab_btn"
                     android:text="提交记录"
                     />
             </RadioGroup>
-            
         </LinearLayout>
     </TabHost>
 

@@ -52,8 +52,6 @@
         <activity android:name="com.sdutlinux.NoteEditActivity" >
         </activity>
 
-        <uses-library android:name="android.test.runner" />
-
         <activity
             android:name="com.sdutlinux.BasicInfoActivity"
             android:label="@string/title_activity_basic_info" >
@@ -62,6 +60,9 @@
             android:name="com.sdutlinux.IssueInfoActivity"
             android:label="@string/title_activity_issue_info" >
         </activity>
+        
+        <uses-library android:name="android.test.runner" />
+
     </application>
 
     <instrumentation

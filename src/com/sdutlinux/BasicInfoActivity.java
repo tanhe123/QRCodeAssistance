@@ -45,7 +45,7 @@ public class BasicInfoActivity extends Activity {
 		
 		nameTxt.setText("设备名称: " + name);
 		
-		show(id);
+//		show(id);
 	}
 
 	private void show(String id) {
