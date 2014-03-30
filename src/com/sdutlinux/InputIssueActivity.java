@@ -1,5 +1,7 @@
 package com.sdutlinux;
 
+import com.sdutlinux.util.SimpleProgressDialog;
+
 import android.os.Bundle;
 import android.os.Handler;
 import android.app.Activity;
@@ -10,16 +12,18 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 
 public class InputIssueActivity extends Activity {
 	private Spinner sp_teachers;
-	private Editor edt_title, edt_desc;
+	private EditText et_title, et_desc;
 	private String[] teachers;
 	private Thread initSpinnerThread;
-	private ProgressDialog progressDialog;
+//	private ProgressDialog progressDialog;
 	private Button bt_input, bt_cancel;
 	
+	private SimpleProgressDialog progressDialog;
 	
 	private static final int START = 1;
 	private static final int OVER = 2;
@@ -33,8 +37,11 @@ public class InputIssueActivity extends Activity {
 		bt_input	= (Button) this.findViewById(R.id.bt_input);
 		bt_cancel	= (Button) this.findViewById(R.id.bt_cancel);
 		
-		initSpinnerTeachers();
+		et_title	= (EditText) this.findViewById(R.id.et_issue_title);
+		et_desc		= (EditText) this.findViewById(R.id.et_issue_desc);
 		
+		initSpinnerTeachers();
+
 		bt_cancel.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
@@ -123,11 +130,7 @@ public class InputIssueActivity extends Activity {
 	
 	private void showProgressDialog() {
 		if (progressDialog == null) {
-			progressDialog = new ProgressDialog(this);
-			progressDialog.setTitle("获取老师列表");
-			progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-			progressDialog.setMessage("正在获取，请稍后");
-			progressDialog.setCancelable(false);	// 不可取消
+			progressDialog = new SimpleProgressDialog(this, "获取老师列表", "正在获取，清稍后");
 		}
 		
 		progressDialog.show();

@@ -28,7 +28,6 @@ public class BasicInfoActivity extends Activity {
 	private final static String TAG = "showinfoactivitytest";
 	private static final String CATEGORY = "Catogery";
 	
-	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

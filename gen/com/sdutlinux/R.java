@@ -146,13 +146,13 @@ public final class R {
         public static final int decode=0x7f070001;
         public static final int decode_failed=0x7f070002;
         public static final int decode_succeeded=0x7f070003;
-        public static final int edt_issue_desc=0x7f070012;
-        public static final int edt_issue_title=0x7f070010;
         public static final int edt_password=0x7f07001e;
         public static final int edt_username=0x7f07001d;
         public static final int encode_failed=0x7f070004;
         public static final int encode_succeeded=0x7f070005;
         public static final int et_content=0x7f070017;
+        public static final int et_issue_desc=0x7f070012;
+        public static final int et_issue_title=0x7f070010;
         public static final int expListView=0x7f07000d;
         public static final int gv_main=0x7f070029;
         public static final int iv_main_icon=0x7f07002a;

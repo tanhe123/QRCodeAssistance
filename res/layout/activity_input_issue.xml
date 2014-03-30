@@ -23,10 +23,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="编辑备忘"
+            android:text="维修记录"
             android:textSize="15sp"
             />
-      
         
 		<Button
 	        android:id="@+id/bt_input"
@@ -43,7 +42,7 @@
 	    android:orientation="horizontal">
 		
 	    <EditText
-	        android:id="@+id/edt_issue_title"
+	        android:id="@+id/et_issue_title"
 	        android:layout_width="0dp"
 	        android:layout_weight="1.5"
 	        android:layout_height="wrap_content" 
@@ -65,7 +64,7 @@
 		>
 	    
 		<EditText
-			android:id="@+id/edt_issue_desc"
+			android:id="@+id/et_issue_desc"
 		    android:layout_width="fill_parent"
 		    android:layout_height="fill_parent"
 		    android:inputType="textMultiLine" 

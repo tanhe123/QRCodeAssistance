@@ -18,5 +18,4 @@ public class IssueInfoActivity extends Activity {
 		getMenuInflater().inflate(R.menu.issue_info, menu);
 		return true;
 	}
-
 }
