@@ -44,7 +44,7 @@ public class UserLogin extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-//		requestWindowFeature(Window.FEATURE_NO_TITLE);
+		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		// 设置图标
 		this.requestWindowFeature(Window.FEATURE_LEFT_ICON);
 		setContentView(R.layout.activity_user_login);

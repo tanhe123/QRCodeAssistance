@@ -1,13 +1,9 @@
 package com.sdutlinux;
 
-import com.sdutlinux.util.SimpleProgressDialog;
-
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.app.Activity;
-import android.app.ProgressDialog;
-import android.content.Intent;
-import android.content.SharedPreferences.Editor;
 import android.view.Menu;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -15,12 +11,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import com.sdutlinux.util.SimpleProgressDialog;
+
 public class InputIssueActivity extends Activity {
 	private Spinner sp_teachers;
 	private EditText et_title, et_desc;
 	private String[] teachers;
 	private Thread initSpinnerThread;
-//	private ProgressDialog progressDialog;
 	private Button bt_input, bt_cancel;
 	
 	private SimpleProgressDialog progressDialog;
