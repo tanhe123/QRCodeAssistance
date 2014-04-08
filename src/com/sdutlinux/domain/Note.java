@@ -3,14 +3,25 @@ package com.sdutlinux.domain;
 public class Note {
 	public String content;
 	public int id;
+	public String date;
 	
-	public Note(int id, String content) {
-		this.content = content;
-		this.id = id;
+	public String getDate() {
+		return date;
 	}
 
-	public Note(String content) {
+	public void setDate(String date) {
+		this.date = date;
+	}
+
+	public Note(int id, String content, String date) {
 		this.content = content;
+		this.id = id;
+		this.date = date;
+	}
+
+	public Note(String content, String date) {
+		this.content = content;
+		this.date = date;
 	}
 
 		
@@ -31,6 +42,6 @@ public class Note {
 	}
 	
 	public String toString() {
-		return "id: " + id + " content: " + content;
+		return "id: " + id + " content: " + content + " time: " + date;
 	}
 }
