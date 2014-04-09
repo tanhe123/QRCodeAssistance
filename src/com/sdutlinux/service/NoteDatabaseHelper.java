@@ -15,7 +15,7 @@ public class NoteDatabaseHelper extends SQLiteOpenHelper {
 	public void onCreate(SQLiteDatabase db) {
 		db.execSQL("CREATE TABLE notes" + 
 				"(noteid integer primary key autoincrement, " +
-				"content varchar(300))");
+				"content varchar(300), date varchar(30))");
 	}
 
 	@Override

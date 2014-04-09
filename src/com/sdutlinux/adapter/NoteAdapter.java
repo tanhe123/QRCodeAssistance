@@ -33,8 +33,6 @@ public class NoteAdapter extends BaseAdapter {
 		this.noteList = noteList;
 	}
 
-
-
 	@Override
 	public int getCount() {
 		return noteList.size();
@@ -58,18 +56,23 @@ public class NoteAdapter extends BaseAdapter {
 			itemView = new ItemView();
 			convertView = inflater.inflate(R.layout.note_item, null);
 			itemView.tv_title = (TextView) convertView.findViewById(R.id.tv_title);
+			itemView.tv_date = (TextView) convertView.findViewById(R.id.tv_date);
 			
 			convertView.setTag(itemView);
 		} else {
 			itemView = (ItemView) convertView.getTag();
 		}
 		
-		itemView.tv_title.setText(noteList.get(position).getContent());
+		Note note = noteList.get(position);
+		
+		itemView.tv_title.setText(note.getContent());
+		itemView.tv_date.setText(note.getDate());
 		
 		return convertView;
 	}
 	
 	class ItemView {
 		public TextView tv_title;
+		public TextView tv_date;
 	}
 }

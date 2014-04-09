@@ -8,23 +8,23 @@ import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.sdutlinux.service.SysApplication;
-import com.sdutlinux.service.WebService;
-
-import android.os.AsyncTask;
-import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
+import android.os.AsyncTask;
+import android.os.Bundle;
 import android.view.Menu;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
 import android.widget.SimpleExpandableListAdapter;
 import android.widget.TextView;
 
+import com.sdutlinux.service.SysApplication;
+import com.sdutlinux.service.WebService;
+
 public class BasicInfoActivity extends Activity {
 	private ExpandableListView expListView;
 	private TextView nameTxt;
-	
+	 
 	private final static String TAG = "showinfoactivitytest";
 	private static final String CATEGORY = "Catogery";
 	

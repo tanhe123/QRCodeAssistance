@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.sdutlinux.domain.Note;
 import com.sdutlinux.service.NoteService;
+import com.sdutlinux.utils.Time;
 
 import android.test.AndroidTestCase;
 import android.util.Log;
@@ -13,7 +14,10 @@ public class NoteServiceTest extends AndroidTestCase {
 	
 	public void testSave() {
 		NoteService service = new NoteService(getContext());
-		service.save(new Note("this is the two note"));
+		service.save(new Note("this is the first note", Time.getTime()));
+		service.save(new Note("this is the second note", "2014-04-07 02:21:11"));
+		service.save(new Note("this is the third note", "2011-04-07 02:21:11"));
+		service.save(new Note("this is the fourth note", "2017-04-07 02:21:11"));
 	}
 	
 	public void testDelete() {
@@ -32,7 +36,7 @@ public class NoteServiceTest extends AndroidTestCase {
 	
 	public void testUpdate() {
 		NoteService service = new NoteService(getContext());
-		Note note = new Note(2, "this is one 111111111111111111111111111111111111111111111111111111111");
+		Note note = new Note(2, "this is one 111111111", Time.getTime());
 		service.update(note);
 	}
 	
