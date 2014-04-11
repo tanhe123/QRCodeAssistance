@@ -2,6 +2,7 @@ package com.sdutlinux;
 
 import com.sdutlinux.domain.Note;
 import com.sdutlinux.service.NoteService;
+import com.sdutlinux.utils.Time;
 
 import android.os.Bundle;
 import android.app.Activity;
@@ -64,10 +65,11 @@ public class NoteEditActivity extends Activity {
 	public void save() {
 		NoteService service = new NoteService(NoteEditActivity.this);
 		if (isNew) {	// 如果是新建备忘就保存
-			Note note = new Note(et_content.getText().toString());
+			Note note = new Note(et_content.getText().toString(), Time.getTime());
 			service.save(note);
 		} else {		// 如果是修改备忘则更新
-			Note note = new Note(noteid, et_content.getText().toString());
+			Note note = new Note(noteid, et_content.getText().toString(), Time.getTime());
+			Log.i(TAG, Time.getTime());
 			service.update(note);
 		}
 	}

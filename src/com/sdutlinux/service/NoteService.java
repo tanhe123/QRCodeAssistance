@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.sdutlinux.domain.Note;
+import com.sdutlinux.utils.Time;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -20,8 +21,8 @@ public class NoteService {
 	
 	public void save(Note note) {
 		SQLiteDatabase db = noteDatabaseHelper.getWritableDatabase();
-		db.execSQL("insert into notes(content) values(?)", 
-				new Object[] {note.getContent()});
+		db.execSQL("insert into notes(content, date) values(?, ?)", 
+				new Object[] {note.getContent(), note.getDate()});
 		db.close();
 	}
 	
@@ -34,8 +35,8 @@ public class NoteService {
 	
 	public void update(Note note) {
 		SQLiteDatabase db = noteDatabaseHelper.getWritableDatabase();
-		db.execSQL("update notes set content=? where noteid=?",
-				new Object[] {note.getContent(), note.getId()});
+		db.execSQL("update notes set content=?, date=? where noteid=?",
+				new Object[] {note.getContent(), note.getDate(), note.getId()});
 		db.close();
 	}
 	
@@ -44,7 +45,7 @@ public class NoteService {
 		
 		SQLiteDatabase db = noteDatabaseHelper.getReadableDatabase();
 		
-		Cursor cursor = db.rawQuery("select * from notes", null);
+		Cursor cursor = db.rawQuery("select * from notes order by date desc", null);
 		
 		while (cursor.moveToNext()) {
 			Note note = readOneFromCursor(cursor);
@@ -73,7 +74,8 @@ public class NoteService {
 	private Note readOneFromCursor(Cursor cursor) {
 		String content = cursor.getString(cursor.getColumnIndex("content")); 
 		int id = cursor.getInt(cursor.getColumnIndex("noteid"));
-		Note note = new Note(id, content);
+		String date = cursor.getString(cursor.getColumnIndex("date"));
+		Note note = new Note(id, content, date);
 		return note;
 	}
 }

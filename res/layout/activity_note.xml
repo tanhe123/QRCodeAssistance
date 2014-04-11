@@ -10,9 +10,10 @@
         android:layout_height="match_parent">
 		
         <ImageView
-            android:layout_width="70dp"
+            android:layout_width="50dp"
             android:layout_height="130dp"
             android:scaleType="fitXY"
+            android:layout_marginLeft="9dp"
             android:src="@drawable/all_bookmark_flag" />
 
         <LinearLayout

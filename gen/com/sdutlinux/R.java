@@ -130,7 +130,7 @@ public final class R {
         public static final int title_background=0x7f02004b;
     }
     public static final class id {
-        public static final int action_settings=0x7f07002d;
+        public static final int action_settings=0x7f07002e;
         /**  Messages IDs 
          */
         public static final int auto_focus=0x7f070000;
@@ -172,6 +172,7 @@ public final class R {
         public static final int search_book_contents_failed=0x7f07000a;
         public static final int search_book_contents_succeeded=0x7f07000b;
         public static final int sp_teachers=0x7f070011;
+        public static final int tv_date=0x7f07002d;
         public static final int tv_list_size=0x7f070013;
         public static final int tv_main_name=0x7f07002b;
         public static final int tv_title=0x7f07002c;
