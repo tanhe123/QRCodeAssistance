@@ -42,8 +42,6 @@ public class NoteEditActivity extends Activity {
 			et_content.setText(content);			
 		}
 		
-		Log.i(TAG, "isnew?" + isNew);
-		
 		bt_cancel.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {

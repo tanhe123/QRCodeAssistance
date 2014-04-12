@@ -20,11 +20,14 @@ import android.widget.TextView;
 
 import com.sdutlinux.service.SysApplication;
 import com.sdutlinux.service.WebService;
+import com.sdutlinux.util.SimpleProgressDialog;
 
 public class BasicInfoActivity extends Activity {
 	private ExpandableListView expListView;
 	private TextView nameTxt;
 	 
+	private SimpleProgressDialog progressDialog;
+	
 	private final static String TAG = "showinfoactivitytest";
 	private static final String CATEGORY = "Catogery";
 	
@@ -43,8 +46,6 @@ public class BasicInfoActivity extends Activity {
 		String name = data.getStringExtra("name");
 		
 		nameTxt.setText("设备名称: " + name);
-		
-//		show(id);
 	}
 
 	private void show(String id) {
@@ -59,6 +60,12 @@ public class BasicInfoActivity extends Activity {
 		
 		public UpdateTask(String num) {
 			this.num = num;
+			progressDialog = new SimpleProgressDialog(BasicInfoActivity.this, "提示", "正在获取机器信息");
+		}
+		
+		@Override
+		protected void onPreExecute() {
+			progressDialog.show();
 		}
 		
 		/**
@@ -75,14 +82,12 @@ public class BasicInfoActivity extends Activity {
 			groupData = new ArrayList<HashMap<String, String>>();
 			childData = new ArrayList<List<HashMap<String, String>>>();
 			
-			
 			for (int i = 0; i <= 5; i++) {
 				HashMap<String, String> curGroupMap = new HashMap<String, String>();
 				groupData.add(curGroupMap);
 				curGroupMap.put(CATEGORY, labels[i]);
 				
 				List<BasicNameValuePair> postParams = new ArrayList<BasicNameValuePair>();
-				
 				
 				postParams.add(new BasicNameValuePair("num", num));
 				postParams.add(new BasicNameValuePair("flag", i+""));
@@ -111,6 +116,8 @@ public class BasicInfoActivity extends Activity {
 					R.layout.item, new String[] {
 							"key", "value" }, new int[] { R.id.key, R.id.value });
 			expListView.setAdapter(mAdapter);
+			
+			progressDialog.dismiss();
 		}
 	}
 	

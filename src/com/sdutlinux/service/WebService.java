@@ -27,8 +27,8 @@ import android.webkit.CookieSyncManager;
 import android.widget.Toast;
 
 public class WebService {
-	public static final String SERVER_URL = "http://192.168.0.101:8000/devices/phone/";
-	public static final String LOGIN_URL = "http://192.168.0.101:8000/devices/phone-login/";
+	public static final String SERVER_URL = "http://192.168.1.110:8000/devices/phone/";
+	public static final String LOGIN_URL = "http://192.168.1.110:8000/devices/phone-login/";
 	public static final String TAG = "WebServiceTest";
 	
 	private static String SESSIONID = null;
@@ -123,6 +123,7 @@ public class WebService {
 	}
 	
 	public JSONObject stringToJson(String content) throws JSONException {
+		Log.i(TAG, content);
 		JSONObject jsonObj = new JSONObject(content).getJSONObject("QRinfo");
 		return jsonObj;
 	}
