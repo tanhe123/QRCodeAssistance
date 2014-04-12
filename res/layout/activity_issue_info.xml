@@ -6,6 +6,29 @@
     android:background="@drawable/background"
     >
 	
+	<RelativeLayout
+   	    android:layout_width="match_parent"
+   	    android:layout_height="wrap_content"
+   	    android:orientation="horizontal"
+   	    >
+   	    <TextView 
+	        android:layout_width="fill_parent"
+	        android:layout_height="50dp"
+	        android:id="@+id/nameTxt"
+	        android:textSize="40sp"
+	        android:textColor="@color/dark"
+	        android:text="详细信息"
+	        android:layout_alignParentLeft="true"
+        />
+   	    <Button 
+   	        android:id="@+id/bt_fresh"
+   	        android:layout_width="wrap_content"
+   	        android:layout_height="wrap_content"
+   	        android:layout_alignParentRight="true"
+   	        android:text="刷新"
+   	        />
+	</RelativeLayout>
+    
     <ExpandableListView 
         android:id="@+id/el_issue_info"                 
         android:layout_width="fill_parent"                  

@@ -122,11 +122,11 @@ public class QRCodeAssistance extends Activity implements OnItemClickListener{
 	//按下返回键后不应该去LoginActivity，应该使其直接回到桌面，
 	//次方法只适用于 2.0 以上版本，
 	//低于2.0 使用public boolean onKeyDown(int keyCode, KeyEvent event) 
-	public void onBackPressed() {
-		Intent i = new Intent(Intent.ACTION_MAIN);
-		i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-		i.addCategory(Intent.CATEGORY_HOME);
-		startActivity(i);
-		super.onBackPressed();
-	}
+//	public void onBackPressed() {
+//		Intent i = new Intent(Intent.ACTION_MAIN);
+//		i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//		i.addCategory(Intent.CATEGORY_HOME);
+//		startActivity(i);
+//		super.onBackPressed();
+//	}
 }

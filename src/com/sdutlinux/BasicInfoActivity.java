@@ -35,7 +35,7 @@ public class BasicInfoActivity extends Activity {
 	private SimpleProgressDialog progressDialog;
 	
 	private final static String TAG = "BasicInfoActivity";
-	private static final String CATEGORY = "Catogery";
+//	private static final String CATEGORY = "Catogery";
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -124,7 +124,7 @@ public class BasicInfoActivity extends Activity {
 			
 			datas = new ArrayList<HashMap<String,String>>();
 			
-			for (int i = 0; i <= 2; i++) {
+			for (int i = 0; i <= 1; i++) {
 				List<BasicNameValuePair> postParams = new ArrayList<BasicNameValuePair>();
 				
 				postParams.add(new BasicNameValuePair("num", num));

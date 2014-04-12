@@ -2,14 +2,14 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal" >
+    android:orientation="vertical" >
     
 	<TextView 
 	    android:layout_width="200dp"
 	    android:layout_height="wrap_content"
 	    android:id="@+id/tv_input_title"
 	    android:text="key"
-	    android:textSize="25sp"
+	    android:textSize="20sp"
 	    android:textColor="@color/dark"
 	    />
 	
@@ -17,7 +17,7 @@
 	    android:layout_width="fill_parent"
 	    android:layout_height="wrap_content"
 	    android:id="@+id/tv_issue_time"
-	    android:textSize="25sp"
+	    android:textSize="13sp"
 	    android:text="value"
 	    android:textColor="@color/dark"
 	    />

@@ -156,7 +156,7 @@ public class UserLoginActivity extends Activity {
 		startActivity(intent);
 		
 		// 结束当前的Activity
-//		UserLoginActivity.this.finish();
+		UserLoginActivity.this.finish();
 	}
 	
 	private ProgressDialog progressDialog = null;

@@ -5,12 +5,15 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.util.Log;
 
 public class JsonParser {
+	private static final String TAG = "JsonParser";
+	
 	public static JSONObject getJsonFromString(String content, String key) throws JSONException {
 		JSONObject jsonObj = stringToJson(content).getJSONObject(key);
 		return jsonObj;
@@ -20,9 +23,17 @@ public class JsonParser {
 		return jsonObject.getJSONObject(key);
 	}
 	
+	public static JSONArray getArrayFromJson(JSONObject jsonObject, String key) throws JSONException {
+		return jsonObject.getJSONArray(key);
+	}
+	
 	public static JSONObject stringToJson(String content) throws JSONException {
 		return new JSONObject(content);
 	}
+	
+//	public static String[] keysToArray(JSONArray json) {
+//		
+//	}
 	
 	/**
 	 * 
@@ -60,6 +71,19 @@ public class JsonParser {
 		
 		return value;
 	}
+	
+	public static List<String> keysToList(JSONObject jsonObject) {
+		List<String> k = new ArrayList<String>();
+		Iterator<String> it = jsonObject.keys();
+		while (it.hasNext()) {
+			String key = it.next();
+			Log.i(TAG, key);
+			k.add(key);
+		}
+		
+		return k;
+	}
+	
 	/*
 	public static List<String> getKeys(JSONObject jsonObject) {
 		List<String> keys = new ArrayList<String>();

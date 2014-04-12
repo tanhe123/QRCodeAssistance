@@ -1,14 +1,9 @@
 package com.sdutlinux.service;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 
-import org.apache.http.Header;
 import org.apache.http.HttpRequest;
 import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
@@ -21,18 +16,16 @@ import org.apache.http.util.EntityUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.sdutlinux.utils.JsonParser;
-
 import android.content.Context;
 import android.util.Log;
-import android.webkit.CookieManager;
-import android.webkit.CookieSyncManager;
 import android.widget.Toast;
+
+import com.sdutlinux.utils.JsonParser;
 
 public class WebService {
 	public static final String SERVER_URL = "http://192.168.1.110:8000/devices/phone/";
 	public static final String LOGIN_URL = "http://192.168.1.110:8000/devices/phone-login/";
-	public static final String TEACHER_LIST_URL = "http://192.168.1.110:8000/devices/phone-maintain";
+	public static final String ISSUE_URL = "http://192.168.1.110:8000/devices/phone-maintain/";
 	
 	public static final String TAG = "WebServiceTest";
 	
