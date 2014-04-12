@@ -6,8 +6,8 @@
     android:background="@drawable/background"
     >
 	
-    <ExpandableListView 
-        android:id="@+id/el_issue_info"                 
+    <ListView 
+        android:id="@+id/lv_history"                 
         android:layout_width="fill_parent"                  
         android:layout_height="fill_parent"   
         android:drawSelectorOnTop="false"

@@ -12,23 +12,29 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
 import android.widget.SimpleExpandableListAdapter;
 import android.widget.TextView;
 
 import com.sdutlinux.service.SysApplication;
 import com.sdutlinux.service.WebService;
-import com.sdutlinux.util.SimpleProgressDialog;
+import com.sdutlinux.utils.JsonParser;
+import com.sdutlinux.utils.SimpleProgressDialog;
 
 public class BasicInfoActivity extends Activity {
-	private ExpandableListView expListView;
+//	private ExpandableListView expListView;
+	private ListView lv_info;
+	
 	private TextView nameTxt;
 	 
 	private SimpleProgressDialog progressDialog;
 	
-	private final static String TAG = "showinfoactivitytest";
+	private final static String TAG = "BasicInfoActivity";
 	private static final String CATEGORY = "Catogery";
 	
 	@Override
@@ -38,7 +44,10 @@ public class BasicInfoActivity extends Activity {
 		
 		SysApplication.getInstance().addActivity(this);
 		
-		expListView = (ExpandableListView) this.findViewById(R.id.expListView);	
+		Log.i(TAG, "BasicInfoActivity");
+		
+//		expListView = (ExpandableListView) this.findViewById(R.id.expListView);
+		lv_info = (ListView) this.findViewById(R.id.lv_info);
 		nameTxt = (TextView) this.findViewById(R.id.nameTxt);
 		
 		Intent data = getIntent();
@@ -46,17 +55,21 @@ public class BasicInfoActivity extends Activity {
 		String name = data.getStringExtra("name");
 		
 		nameTxt.setText("设备名称: " + name);
+		
+		show(id);
 	}
 
 	private void show(String id) {
+		Log.i(TAG, "show test");
 		new UpdateTask(id).execute(WebService.SERVER_URL);
 	}
 	
 	class UpdateTask extends AsyncTask<String, String, Boolean> {
 		private String num;
 		
-		private List<List<HashMap<String, String>>> childData;
-		private List<HashMap<String, String>> groupData;
+//		private List<List<HashMap<String, String>>> childData;
+//		private List<HashMap<String, String>> groupData;
+		private List<HashMap<String, String>> datas;
 		
 		public UpdateTask(String num) {
 			this.num = num;
@@ -73,12 +86,16 @@ public class BasicInfoActivity extends Activity {
 		 */
 		@Override
 		protected Boolean doInBackground(String... params) {
-			String url = params[0];
+			Log.i(TAG, "开始查询");
 			
-			String[] labels = new String[] {"设备基本信息", "设备类型", "使用单位相关", "财务相关", "财务审核相关", "归口审核相关"};
+			String url = params[0];
 			
 			WebService service = new WebService(getApplicationContext());
 			
+			/* ExpandableList 
+			String[] labels = new String[] {"设备基本信息", "设备类型", "使用单位相关", "财务相关", "财务审核相关", "归口审核相关"};
+			
+			Log.i(TAG, "ha");
 			groupData = new ArrayList<HashMap<String, String>>();
 			childData = new ArrayList<List<HashMap<String, String>>>();
 			
@@ -93,9 +110,32 @@ public class BasicInfoActivity extends Activity {
 				postParams.add(new BasicNameValuePair("flag", i+""));
 				
 				try {
-					JSONObject jsonObj = service.getJson(url, postParams);	
+					JSONObject jsonObj = service.getJson(url, postParams);
+					Log.i(TAG, jsonObj.toString());
+					
 					List<HashMap<String, String>> children = service.jsonToList(jsonObj);
 					childData.add(children);
+					
+				} catch (JSONException e) {
+					return false;
+				}
+			}
+			*/
+			
+			datas = new ArrayList<HashMap<String,String>>();
+			
+			for (int i = 0; i <= 2; i++) {
+				List<BasicNameValuePair> postParams = new ArrayList<BasicNameValuePair>();
+				
+				postParams.add(new BasicNameValuePair("num", num));
+				postParams.add(new BasicNameValuePair("flag", i+""));
+				
+				try {
+					JSONObject jsonObj = service.getJson(url, postParams);
+					Log.i(TAG, jsonObj.toString());
+					
+					List<HashMap<String, String>> data = JsonParser.jsonToList(jsonObj);
+					datas.addAll(data);
 					
 				} catch (JSONException e) {
 					return false;
@@ -105,17 +145,19 @@ public class BasicInfoActivity extends Activity {
 			return true;
 		}
 		
-		/**
-		 * 如果登录成功，返回 类似于 [0,1,2,3,4,5] 这样的字符串
-		 * 如果失败, 返回 [-1]
-		 */
 		protected void onPostExecute(Boolean result) {
-			ExpandableListAdapter mAdapter = new SimpleExpandableListAdapter(BasicInfoActivity.this, groupData,
-					R.layout.category, new String[] {
-							CATEGORY }, new int[] { R.id.category }, childData,
-					R.layout.item, new String[] {
-							"key", "value" }, new int[] { R.id.key, R.id.value });
-			expListView.setAdapter(mAdapter);
+			
+//			ExpandableListAdapter mAdapter = new SimpleExpandableListAdapter(BasicInfoActivity.this, groupData,
+//					R.layout.category, new String[] {
+//							CATEGORY }, new int[] { R.id.category }, childData,
+//					R.layout.item, new String[] {
+//							"key", "value" }, new int[] { R.id.key, R.id.value });
+//			expListView.setAdapter(mAdapter);
+			
+			Log.i(TAG, datas.toString());
+			SimpleAdapter adapter = new SimpleAdapter(BasicInfoActivity.this, datas, R.layout.basic_info_item, new String[] {"key",  "value"},
+					new int[] {R.id.key, R.id.value});
+			lv_info.setAdapter(adapter);
 			
 			progressDialog.dismiss();
 		}

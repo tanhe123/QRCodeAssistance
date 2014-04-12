@@ -1,5 +1,8 @@
 package com.sdutlinux;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,7 +14,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
-import com.sdutlinux.util.SimpleProgressDialog;
+import com.sdutlinux.service.WebService;
+import com.sdutlinux.utils.SimpleProgressDialog;
 
 public class InputIssueActivity extends Activity {
 	private Spinner sp_teachers;
@@ -21,6 +25,8 @@ public class InputIssueActivity extends Activity {
 	private Button bt_input, bt_cancel;
 	
 	private SimpleProgressDialog progressDialog;
+	
+	private WebService webService;
 	
 	private static final int START = 1;
 	private static final int OVER = 2;
@@ -54,6 +60,8 @@ public class InputIssueActivity extends Activity {
 				finish();
 			}
 		});
+		
+		webService = new WebService(this);
 	}
 
 	@Override
@@ -91,16 +99,27 @@ public class InputIssueActivity extends Activity {
 			// 任务开始前
 			mHandler.sendEmptyMessage(START);
 			
+			// test 开始
 			// 获取老师名单
+//			try {
+//				Thread.sleep(2000);
+//			} catch (InterruptedException e) {
+//				e.printStackTrace();
+//			}
+			
+			// 得到老师名单
+//			teachers = new String[] {"管老师", "陈老师", "谭老师", "张老师",
+//					"汤老师", "刘老师"};
+			// test 结束
+			
 			try {
-				Thread.sleep(2000);
-			} catch (InterruptedException e) {
+				JSONObject jsonObject = webService.getJson(WebService.TEACHER_LIST_URL);
+				
+			} catch (JSONException e) {
 				e.printStackTrace();
 			}
 			
-			// 得到老师名单
-			teachers = new String[] {"管老师", "陈老师", "谭老师", "张老师",
-					"汤老师", "刘老师"};
+			
 			mHandler.sendEmptyMessage(OVER); 
 		}
 	};

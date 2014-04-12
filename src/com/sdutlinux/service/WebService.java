@@ -6,6 +6,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.apache.http.Header;
+import org.apache.http.HttpRequest;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
@@ -20,6 +21,8 @@ import org.apache.http.util.EntityUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.sdutlinux.utils.JsonParser;
+
 import android.content.Context;
 import android.util.Log;
 import android.webkit.CookieManager;
@@ -29,6 +32,8 @@ import android.widget.Toast;
 public class WebService {
 	public static final String SERVER_URL = "http://192.168.1.110:8000/devices/phone/";
 	public static final String LOGIN_URL = "http://192.168.1.110:8000/devices/phone-login/";
+	public static final String TEACHER_LIST_URL = "http://192.168.1.110:8000/devices/phone-maintain";
+	
 	public static final String TAG = "WebServiceTest";
 	
 	private static String SESSIONID = null;
@@ -38,49 +43,44 @@ public class WebService {
 		this.context = context;
 	}
 	
-	// 测试用
+	// 测试用g
 	public String post(String url, List<BasicNameValuePair> params) {
 		try {
  			HttpPost request = new HttpPost(url); // 根据内容来源地址创建一个Http请求
 			request.setEntity(new UrlEncodedFormEntity(params, HTTP.UTF_8)); // 设置参数的编码
 			
 			// 设置sessionID
-			if (null != SESSIONID) {
-				request.setHeader("Cookie", "sessionid=" + SESSIONID);
-			}
-		
+//			if (null != SESSIONID) {
+//				request.setHeader("Cookie", "sessionid=" + SESSIONID);
+//			}
+			// 为请求添加 sessionid
+			setSessionId(request);
+			
 			DefaultHttpClient client = new DefaultHttpClient();
 
 			// 设置超时时间
 			client.getParams().setParameter(CoreConnectionPNames.CONNECTION_TIMEOUT, 5000);
 			client.getParams().setParameter(CoreConnectionPNames.SO_TIMEOUT, 10000);
 			
-			Log.i(TAG, "pre execute");
-			
 			HttpResponse httpResponse = client.execute(request); // 发送请求并获取反馈
-			
-			Log.i(TAG, "after execute");
 			
 			// 解析返回的内容
 			if (httpResponse.getStatusLine().getStatusCode() != 404) {
-				Log.i(TAG,  "pre getcookie");
-				
 				// 获取 Cookie, sessionid
-				List<Cookie> cookie = client.getCookieStore().getCookies();
-	
-				Log.i(TAG, "after getcookie");
+//				List<Cookie> cookie = client.getCookieStore().getCookies();
 				
-				for (Cookie c : cookie) {
-					if (c.getName().equals("sessionid")) {
-						Log.i(TAG, "" + c.getName() + ":" + c.getValue());
-						SESSIONID = c.getValue();	
-					}
-				}
+//				for (Cookie c : cookie) {
+//					if (c.getName().equals("sessionid")) {
+//						SESSIONID = c.getValue();	
+//					}
+//				}
 				
-				Log.i(TAG, "pre get result");
+				// 将请求中的sessionid保存起来
+				setSessionId(client);
 				
 				String result = EntityUtils.toString(httpResponse.getEntity());
-				Log.i(TAG, "after getresult");
+				Log.i(TAG, result);
+				
 				return result;
 			}
 		} catch (Exception e) {
@@ -90,15 +90,49 @@ public class WebService {
 		return null;
 	}
 	
+	/**
+	 * 给 request 添加 sessionid
+	 * @param request
+	 */
+	private void setSessionId(HttpRequest request) {
+		// 设置sessionID
+		if (null != SESSIONID) {
+			request.setHeader("Cookie", "sessionid=" + SESSIONID);
+		}		
+	}
+	
+	/**
+	 * 将 session 保存起来
+	 * @param client
+	 * @return
+	 */
+	public void setSessionId(DefaultHttpClient client) {
+		// 获取 Cookie, sessionid
+		List<Cookie> cookie = client.getCookieStore().getCookies();
+		
+		for (Cookie c : cookie) {
+			if (c.getName().equals("sessionid")) {
+				SESSIONID = c.getValue();	
+			}
+		}
+	}
+	
 	// 测试用
 	public String get(String url) {
 		try {
 			// 根据内容来源地址创建一个Http请求
 			HttpGet request = new HttpGet(url);
-			// // 设置参数的编码
-			HttpResponse httpResponse = new DefaultHttpClient().execute(request); // 发送请求并获取反馈
+			
+			setSessionId(request);
+			
+			DefaultHttpClient client = new DefaultHttpClient();
+			
+			// 设置参数的编码
+			HttpResponse httpResponse = client.execute(request); // 发送请求并获取反馈
 			// 解析返回的内容
 			if (httpResponse.getStatusLine().getStatusCode() != 404) {
+				setSessionId(client);
+				
 				String result = EntityUtils.toString(httpResponse.getEntity());
 				return result;
 			}
@@ -109,61 +143,27 @@ public class WebService {
 	}
 
 	/**
-	 * 获取 json 信息
+	 * post 方式 获取 json 信息
 	 * @param url 存储信息的 url
 	 * @return 返回JSONObject对象
 	 * @throws JSONException 
 	 */
 	public JSONObject getJson(String url, List<BasicNameValuePair> params) throws JSONException {
 		String content = post(url, params);
-		
-		JSONObject jsonObj = stringToJson(content);
+		JSONObject jsonObj = JsonParser.getJsonFromString(content, "QRinfo");
 		
 		return jsonObj;
 	}
 	
-	public JSONObject stringToJson(String content) throws JSONException {
-		Log.i(TAG, content);
-		JSONObject jsonObj = new JSONObject(content).getJSONObject("QRinfo");
-		return jsonObj;
-	}
-	
 	/**
-	 * 
-	 * @param jsonObj
-	 * @throws JSONException 
-	 */
-	public List<HashMap<String, String>> jsonToList(JSONObject jsonObj) throws JSONException {
-		ArrayList<HashMap<String, String>> list = new ArrayList<HashMap<String,String>>();
-		
-		Iterator<String> keys = jsonObj.keys();
-		
-		while (keys.hasNext()) {
-			String key = keys.next();
-			String value = jsonObj.getString(key);
-			
-			HashMap<String, String> map = new HashMap<String, String>();
-			map.put("key", key);
-			map.put("value", value);
-			
-			list.add(map);
-		}
-		
-		return list;
-	}
-	
-	/**
-	 * 从json中获取 key 的值
-	 * @param jsonObj
-	 * @param key
+	 * 通过get方式获得json
 	 * @return
 	 * @throws JSONException 
 	 */
-	public String getFromJson(JSONObject jsonObj, String key) throws JSONException {
-		Iterator<String> keys = jsonObj.keys();
+	public JSONObject getJson(String url) throws JSONException {
+		String content = get(url);
+		JSONObject jsonObject = JsonParser.getJsonFromString(content, "QRinfo");
 		
-		String value = jsonObj.getString(key);
-		
-		return value;
+		return jsonObject;
 	}
 }

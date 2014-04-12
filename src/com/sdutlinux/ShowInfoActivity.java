@@ -51,6 +51,8 @@ public class ShowInfoActivity extends Activity{
 		
 		SysApplication.getInstance().addActivity(this);
 		
+		Log.i(TAG, "showinfoactivity");
+		
 		radioGroup = (RadioGroup) this.findViewById(R.id.radio_group);
 		
 		LayoutInflater inflater = LayoutInflater.from(this);

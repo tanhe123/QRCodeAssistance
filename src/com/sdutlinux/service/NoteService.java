@@ -13,10 +13,10 @@ import android.database.sqlite.SQLiteDatabase;
 public class NoteService {
 	private String table = "notes";
 	
-	private NoteDatabaseHelper noteDatabaseHelper;
+	private DatabaseHelper noteDatabaseHelper;
 	
 	public NoteService(Context context) {
-		noteDatabaseHelper = new NoteDatabaseHelper(context);
+		noteDatabaseHelper = new DatabaseHelper(context);
 	}
 	
 	public void save(Note note) {

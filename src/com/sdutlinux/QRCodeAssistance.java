@@ -16,6 +16,7 @@ import android.widget.LinearLayout;
 
 import com.sdutlinux.adapter.MainUIAdapter;
 import com.sdutlinux.service.SysApplication;
+import com.sdutlinux.utils.AlertDialogFactory;
 import com.zxing.activity.CaptureActivity;
 
 public class QRCodeAssistance extends Activity implements OnItemClickListener{
@@ -63,14 +64,19 @@ public class QRCodeAssistance extends Activity implements OnItemClickListener{
 			startActivityForResult(openCameraIntent, 0);		
 			break;
 		case 1:			// 历史
-			
+			if (isAnonymous) {
+				AlertDialogFactory.createWarningAlertDialog(this, "警告", "请登录").show();
+			} else {
+				Intent historyIntent = new Intent(QRCodeAssistance.this, HistoryActivity.class);
+				startActivity(historyIntent);				
+			}
 			break;
 		case 2:			// 备忘
 			Intent noteIntent = new Intent(QRCodeAssistance.this, NoteActivity.class);
 			startActivity(noteIntent);
 			break;
 		case 3:			// 注销
-			Intent logoutIntent = new Intent(QRCodeAssistance.this, UserLogin.class);
+			Intent logoutIntent = new Intent(QRCodeAssistance.this, UserLoginActivity.class);
 			logoutIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			startActivity(logoutIntent);
 			break;
@@ -100,21 +106,27 @@ public class QRCodeAssistance extends Activity implements OnItemClickListener{
 			Bundle bundle = new Bundle();																																																																																																																																																																																																																																																																																																																																															
 			bundle.putString("id", results[0]);
 			bundle.putString("name", results[1]);
-																																																																																																																																																																																																																																																																																																					
-			Intent intent = new Intent(QRCodeAssistance.this, ShowInfoActivity.class);
-			intent.putExtras(bundle);
-			startActivity(intent);																																																																													
+									
+			if (isAnonymous) {		// 如果匿名登录
+				Intent intent = new Intent(QRCodeAssistance.this, BasicInfoActivity.class);
+				intent.putExtras(bundle);
+				startActivity(intent);
+			} else {
+				Intent intent = new Intent(QRCodeAssistance.this, ShowInfoActivity.class);
+				intent.putExtras(bundle);
+				startActivity(intent);
+			}
 //		} 
 	}
 
 	//按下返回键后不应该去LoginActivity，应该使其直接回到桌面，
 	//次方法只适用于 2.0 以上版本，
 	//低于2.0 使用public boolean onKeyDown(int keyCode, KeyEvent event) 
-//	public void onBackPressed() {
-//		Intent i = new Intent(Intent.ACTION_MAIN);
-//		i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//		i.addCategory(Intent.CATEGORY_HOME);
-//		startActivity(i);
-//		super.onBackPressed();
-//	}
+	public void onBackPressed() {
+		Intent i = new Intent(Intent.ACTION_MAIN);
+		i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+		i.addCategory(Intent.CATEGORY_HOME);
+		startActivity(i);
+		super.onBackPressed();
+	}
 }

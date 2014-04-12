@@ -5,9 +5,9 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.database.sqlite.SQLiteOpenHelper;
 
-public class NoteDatabaseHelper extends SQLiteOpenHelper {
+public class DatabaseHelper extends SQLiteOpenHelper {
 
-	public NoteDatabaseHelper(Context context) {
+	public DatabaseHelper(Context context) {
 		super(context, "notes.db", null, 1);
 	}
 

@@ -1,4 +1,4 @@
-package com.sdutlinux.util;
+package com.sdutlinux.utils;
 
 import android.app.ProgressDialog;
 import android.content.Context;

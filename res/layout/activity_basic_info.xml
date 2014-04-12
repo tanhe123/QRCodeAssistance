@@ -15,12 +15,20 @@
         android:text="设备名称"
         />
    
-    <ExpandableListView   
+    <!-- <ExpandableListView   
         android:id="@+id/expListView"                 
         android:layout_width="fill_parent"                  
         android:layout_height="fill_parent"                                
         android:drawSelectorOnTop="false"
         android:cacheColorHint="#00000000" 
-        />   
+        />-->   
+        
+    <ListView 
+        android:id="@+id/lv_info"                 
+        android:layout_width="fill_parent"                  
+        android:layout_height="fill_parent"   
+        android:drawSelectorOnTop="false"
+		android:cacheColorHint="#00000000"
+        />
         
 </LinearLayout>

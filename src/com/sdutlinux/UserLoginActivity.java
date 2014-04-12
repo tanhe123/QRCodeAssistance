@@ -7,6 +7,7 @@ import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.R.anim;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -27,8 +28,9 @@ import android.widget.Toast;
 import com.sdutlinux.service.DataService;
 import com.sdutlinux.service.SysApplication;
 import com.sdutlinux.service.WebService;
+import com.sdutlinux.utils.JsonParser;
 
-public class UserLogin extends Activity {
+public class UserLoginActivity extends Activity {
 	private static final String TAG	= "UserLoginTest";
 	
 	private DataService dataService;
@@ -127,7 +129,7 @@ public class UserLogin extends Activity {
 	}
 	
 	private void showProgressDialog() {
-		progressDialog = new ProgressDialog(UserLogin.this);
+		progressDialog = new ProgressDialog(UserLoginActivity.this);
 		progressDialog.setTitle("登录");
 		progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
 		progressDialog.setMessage("正在登录,请稍等......");
@@ -143,7 +145,7 @@ public class UserLogin extends Activity {
 	
 	private void loginSucceed() {
 		Toast.makeText(getApplicationContext(), "登录成功", Toast.LENGTH_SHORT).show();
-		Intent intent = new Intent(UserLogin.this, QRCodeAssistance.class);
+		Intent intent = new Intent(UserLoginActivity.this, QRCodeAssistance.class);
 		intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 		
 		// 匿名登录
@@ -154,7 +156,7 @@ public class UserLogin extends Activity {
 		startActivity(intent);
 		
 		// 结束当前的Activity
-		UserLogin.this.finish();
+//		UserLoginActivity.this.finish();
 	}
 	
 	private ProgressDialog progressDialog = null;
@@ -170,7 +172,7 @@ public class UserLogin extends Activity {
 		
 		protected void onPreExecute() {
 			showProgressDialog();		// 显示正在登录 progressdialog
-			btn_login.setEnabled(false);	 
+			btn_login.setEnabled(false);
 		}
 		
 		@Override
@@ -188,15 +190,13 @@ public class UserLogin extends Activity {
 			
 			try {
 				JSONObject jsonObj = webService.getJson(url, postParams);
-				Log.i(TAG, "jsonObj" + jsonObj.toString());
-				String flag = webService.getFromJson(jsonObj, "flag");
-				Log.i(TAG, "flag: " + flag);
+				String flag = JsonParser.getStringFromJson(jsonObj, "flag");
 				return flag;
 				
 			} catch (JSONException e) {
 				e.printStackTrace();
 			}
-			
+
 			return null;
 		}
 		

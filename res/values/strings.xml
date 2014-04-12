@@ -30,5 +30,6 @@
     <string name="title_activity_note_edit">NoteEditActivity</string>
     <string name="title_activity_basic_info">BasicInfoActivity</string>
     <string name="title_activity_issue_info">IssueInfoActivity</string>
+    <string name="title_activity_history">HistoryActivity</string>
 
 </resources>
