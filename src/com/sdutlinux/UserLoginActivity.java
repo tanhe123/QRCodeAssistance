@@ -178,16 +178,12 @@ public class UserLoginActivity extends Activity {
 		@Override
 		protected String doInBackground(String... params) {
 			List<BasicNameValuePair> postParams = new ArrayList<BasicNameValuePair>();
-			
-			Log.i(TAG, "doInBackground");
-			
+
 			postParams.add(new BasicNameValuePair("username", username));
 			postParams.add(new BasicNameValuePair("password", password));
 			
 			String url = params[0];
-			
-			Log.i(TAG, url);
-			
+	
 			try {
 				JSONObject jsonObj = webService.getJson(url, postParams);
 				String flag = JsonParser.getStringFromJson(jsonObj, "flag");
