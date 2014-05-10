@@ -28,12 +28,9 @@ public class JsonParser {
 	}
 	
 	public static JSONObject stringToJson(String content) throws JSONException {
+		Log.i(TAG, content);
 		return new JSONObject(content);
 	}
-	
-//	public static String[] keysToArray(JSONArray json) {
-//		
-//	}
 	
 	/**
 	 * 
@@ -57,6 +54,21 @@ public class JsonParser {
 		}
 		
 		return list;
+	}
+	
+	public static HashMap<String, String> jsonToHash(JSONObject jsonObject) throws JSONException {
+		HashMap<String, String> map = new HashMap<String, String>();
+		
+		Iterator<String> keys = jsonObject.keys();
+		
+		while (keys.hasNext()) {
+			String key = keys.next();
+			String value = jsonObject.getString(key);
+			
+			map.put(key, value);
+		}
+		
+		return map;
 	}
 	
 	/**

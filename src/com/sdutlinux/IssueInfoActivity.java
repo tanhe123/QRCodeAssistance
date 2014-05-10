@@ -72,15 +72,11 @@ public class IssueInfoActivity extends Activity {
 		new UpdateTask(id).execute(WebService.SERVER_URL);
 	}
 
-	
-	
 	class UpdateTask extends AsyncTask<String, String, JSONObject> {
 		private String num;
 		
-		
 		private List<List<HashMap<String, String>>> childData;
 		private List<HashMap<String, String>> groupData;
-		private List<HashMap<String, String>> datas;
 		
 		public UpdateTask(String num) {
 			this.num = num;
@@ -108,18 +104,15 @@ public class IssueInfoActivity extends Activity {
 			
 			postParams.add(new BasicNameValuePair("num", num));
 			postParams.add(new BasicNameValuePair("flag", 2+""));	// 2 代表维修记录
-			
+				
 			JSONObject jsonObject = null;
 			try {
 				jsonObject = service.getJson(url, postParams);
-				
 			} catch (JSONException e) {
 				e.printStackTrace();
 			}
 			
 			return jsonObject;
-			
-
 		}
 		
 		protected void onPostExecute(JSONObject jsonObject) {
@@ -141,7 +134,6 @@ public class IssueInfoActivity extends Activity {
 					map.put("solution", jo.getString("solution"));
 					children.add(map);
 					childData.add(children);
-					
 				} catch (JSONException e) {
 					e.printStackTrace();
 				}
@@ -159,9 +151,7 @@ public class IssueInfoActivity extends Activity {
 				HashMap<String, String> curGroupMap = new HashMap<String, String>();
 				groupData.add(curGroupMap);
 				curGroupMap.put(CATEGORY, labels[i]);
-				
-				
-				
+
 				try {
 					JSONObject jsonObj = service.getJson(url, postParams);				
 					List<HashMap<String, String>> children = service.jsonToList(jsonObj);
