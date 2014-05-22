@@ -93,12 +93,12 @@ public class QRCodeAssistance extends Activity implements OnItemClickListener{
 		super.onActivityResult(requestCode, resultCode, data);
 		
 		//处理扫描结果（在界面上显示）
-//		if (resultCode == RESULT_OK) {
-//			Bundle result = data.getExtras();
-//			String scanResult = result.getString("result");
+		if (resultCode == RESULT_OK) {
+			Bundle result = data.getExtras();
+			String scanResult = result.getString("result");
 		
 			// 测试开始
-			String scanResult = "20036370AA;钥匙柜;";
+//			String scanResult = "20036370AA;钥匙柜;";
 			// 测试开始
 																																																																																						
 			String[] results = scanResult.split(";");
@@ -116,7 +116,7 @@ public class QRCodeAssistance extends Activity implements OnItemClickListener{
 				intent.putExtras(bundle);
 				startActivity(intent);
 			}
-//		} 
+		} 
 	}
 
 	//按下返回键后不应该去LoginActivity，应该使其直接回到桌面，
