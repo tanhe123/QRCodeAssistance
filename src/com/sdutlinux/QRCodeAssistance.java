@@ -22,6 +22,8 @@ import com.zxing.activity.CaptureActivity;
 public class QRCodeAssistance extends Activity implements OnItemClickListener{
     private static final String TAG = "QRCodeAssistancetest";
 
+    public static final String ANONYMOUS = "anonymous";
+    
     private boolean isAnonymous;
     private GridView gridView;
     private LinearLayout ll;
@@ -40,7 +42,7 @@ public class QRCodeAssistance extends Activity implements OnItemClickListener{
         
         // 处理匿名登录
         isAnonymous = 
-        		getIntent().getBooleanExtra("anonymous", false);
+        		getIntent().getBooleanExtra(ANONYMOUS, false);
         if (isAnonymous) {
         	setTitle(getTitle() + " [匿名用户]");
         }
@@ -106,6 +108,7 @@ public class QRCodeAssistance extends Activity implements OnItemClickListener{
 			Bundle bundle = new Bundle();																																																																																																																																																																																																																																																																																																																																															
 			bundle.putString("id", results[0]);
 			bundle.putString("name", results[1]);
+			bundle.putBoolean(ANONYMOUS, isAnonymous);
 									
 			if (isAnonymous) {		// 如果匿名登录
 				Intent intent = new Intent(QRCodeAssistance.this, BasicInfoActivity.class);

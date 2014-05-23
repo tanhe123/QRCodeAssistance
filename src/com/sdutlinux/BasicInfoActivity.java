@@ -33,7 +33,9 @@ public class BasicInfoActivity extends Activity {
 	private TextView nameTxt;
 	 
 	private SimpleProgressDialog progressDialog;
+	private Boolean isAnonymous;
 	
+    public static final String ANONYMOUS = "anonymous";
 	private final static String TAG = "BasicInfoActivity";
 //	private static final String CATEGORY = "Catogery";
 	
@@ -53,6 +55,7 @@ public class BasicInfoActivity extends Activity {
 		Intent data = getIntent();
 		String id = data.getStringExtra("id");
 		String name = data.getStringExtra("name");
+		isAnonymous = data.getBooleanExtra(ANONYMOUS, false);
 		
 		nameTxt.setText("设备名称: " + name);
 		
@@ -69,7 +72,18 @@ public class BasicInfoActivity extends Activity {
 		
 //		private List<List<HashMap<String, String>>> childData;
 //		private List<HashMap<String, String>> groupData;
-		private List<HashMap<String, String>> datas;
+//		private List<HashMap<String, String>> datas;
+		private HashMap<String, String> datas;
+		
+		// 显示结果的顺序
+		public String[] normal_keys = new String[] {
+				"设备编号", "设备名称", "单价", 
+				"总造价", "存放地点", "使（领）用人", 
+				"现状", "计量单位", "型号", "规格"};
+
+		public String[] anony_keys = new String[] {
+				"设备编号", "设备名称", "型号", "规格"
+		};
 		
 		public UpdateTask(String num) {
 			this.num = num;
@@ -122,7 +136,8 @@ public class BasicInfoActivity extends Activity {
 			}
 			*/
 			
-			datas = new ArrayList<HashMap<String,String>>();
+//			datas = new ArrayList<HashMap<String,String>>();
+			datas = new HashMap<String, String>();
 			
 			for (int i = 0; i <= 1; i++) {
 				List<BasicNameValuePair> postParams = new ArrayList<BasicNameValuePair>();
@@ -134,9 +149,10 @@ public class BasicInfoActivity extends Activity {
 					JSONObject jsonObj = service.getJson(url, postParams);
 					Log.i(TAG, jsonObj.toString());
 					
-					List<HashMap<String, String>> data = JsonParser.jsonToList(jsonObj);
-					datas.addAll(data);
+//					List<HashMap<String, String>> data = JsonParser.jsonToList(jsonObj);
+					HashMap<String, String> data = JsonParser.jsonToHash(jsonObj);
 					
+					datas.putAll(data);
 				} catch (JSONException e) {
 					return false;
 				}
@@ -146,7 +162,6 @@ public class BasicInfoActivity extends Activity {
 		}
 		
 		protected void onPostExecute(Boolean result) {
-			
 //			ExpandableListAdapter mAdapter = new SimpleExpandableListAdapter(BasicInfoActivity.this, groupData,
 //					R.layout.category, new String[] {
 //							CATEGORY }, new int[] { R.id.category }, childData,
@@ -155,11 +170,34 @@ public class BasicInfoActivity extends Activity {
 //			expListView.setAdapter(mAdapter);
 			
 			Log.i(TAG, datas.toString());
-			SimpleAdapter adapter = new SimpleAdapter(BasicInfoActivity.this, datas, R.layout.basic_info_item, new String[] {"key",  "value"},
+			
+			List<HashMap<String, String>> res = transToHash(datas);
+			SimpleAdapter adapter = new SimpleAdapter(BasicInfoActivity.this, res, R.layout.basic_info_item, new String[] {"key",  "value"},
 					new int[] {R.id.key, R.id.value});
 			lv_info.setAdapter(adapter);
 			
 			progressDialog.dismiss();
+		}
+		
+		// 为了让显示结果顺序排列
+		public List<HashMap<String, String>> transToHash(HashMap<String, String> data) {
+			List<HashMap<String, String>> res = new ArrayList<HashMap<String,String>>();
+			
+			String[] keys;
+			
+			// 匿名登录和正常登录显示的信息是不同的
+			if (isAnonymous) keys = anony_keys;
+			else keys = normal_keys;
+			
+			for (String key : keys) {
+				String value = datas.get(key);
+				HashMap<String, String> r = new HashMap<String, String>();
+				r.put("key", key);
+				r.put("value", value);
+				res.add(r);				
+			}
+			
+			return res;
 		}
 	}
 	

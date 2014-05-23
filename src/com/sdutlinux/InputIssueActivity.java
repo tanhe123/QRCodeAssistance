@@ -58,7 +58,6 @@ public class InputIssueActivity extends Activity {
 		
 		et_title	= (EditText) this.findViewById(R.id.et_issue_title);
 		et_desc		= (EditText) this.findViewById(R.id.et_issue_desc);
-
 		
 		Intent data = getIntent();
 		id = data.getStringExtra("id");
@@ -87,7 +86,6 @@ public class InputIssueActivity extends Activity {
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.input_issue, menu);
-		
 		
 		return true;
 	}
@@ -135,6 +133,10 @@ public class InputIssueActivity extends Activity {
 			postParams.add(new BasicNameValuePair("head", id_teacher));	// 老师编号
 			postParams.add(new BasicNameValuePair("id", id));
 			
+			// 测试用
+			postParams.add(new BasicNameValuePair("solved", "True"));
+			// 测试结束
+			
 			Log.i(TAG,  title + " " + desc + " " + id_teacher + " " + id);
 			
 			webService.post(WebService.ISSUE_URL, postParams);		
@@ -149,24 +151,12 @@ public class InputIssueActivity extends Activity {
 			// 任务开始前
 			mHandler.sendEmptyMessage(START);
 			
-			// test 开始
-			// 获取老师名单
-//			try {
-//				Thread.sleep(2000);
-//			} catch (InterruptedException e) {
-//				e.printStackTrace();
-//			}
-			
-			// 得到老师名单
-//			teachers = new String[] {"管老师", "陈老师", "谭老师", "张老师",
-//					"汤老师", "刘老师"};
-			// test 结束
-			
 			try {
 				JSONObject jo = webService.getJson(WebService.ISSUE_URL);
 				jsonObject = JsonParser.getJsonFromJson(jo, "teacher");
 				Log.i(TAG, jsonObject.toString());
 				teachers = JsonParser.keysToList(jsonObject);
+				
 				for (String teacher : teachers) {
 					Log.i(TAG, teacher);
 				}
@@ -174,8 +164,7 @@ public class InputIssueActivity extends Activity {
 				e.printStackTrace();
 			}
 			
-			
-			mHandler.sendEmptyMessage(OVER); 
+			mHandler.sendEmptyMessage(OVER);
 		}
 	};
 	
@@ -185,8 +174,7 @@ public class InputIssueActivity extends Activity {
 			case OVER:
 				initSpinner(teachers);
 				// 关闭 progressDialog
-				dismissProgressDialog();
-								
+				dismissProgressDialog();		
 				break;
 			case START:
 				// 显示 progressDialog

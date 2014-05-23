@@ -23,9 +23,16 @@ import android.widget.Toast;
 import com.sdutlinux.utils.JsonParser;
 
 public class WebService {
+<<<<<<< HEAD
 	public static final String SERVER_URL = "http://192.168.0.102:8000/devices/phone/";
 	public static final String LOGIN_URL = "http://192.168.0.102:8000/devices/phone-login/";
 	public static final String ISSUE_URL = "http://192.168.0.102:8000/devices/phone-maintain/";
+=======
+	public static final String BASE_URL = "http://192.168.1.110:8000/devices";
+	public static final String SERVER_URL = BASE_URL + "/phone/";
+	public static final String LOGIN_URL = BASE_URL + "/phone-login/";
+	public static final String ISSUE_URL = BASE_URL + "/phone-maintain/";
+>>>>>>> 45c358f607c5ef13224661579e012996c87653ec
 	
 	public static final String TAG = "WebServiceTest";
 	
