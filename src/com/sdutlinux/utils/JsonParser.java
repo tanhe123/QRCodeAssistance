@@ -63,7 +63,7 @@ public class JsonParser {
 		while (keys.hasNext()) {
 			String key = keys.next();
 			String value = jsonObject.getString(key);
-			
+
 			map.put(key, value);
 		}
 		

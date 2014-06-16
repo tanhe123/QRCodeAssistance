@@ -147,16 +147,17 @@ public class BasicInfoActivity extends Activity {
 				
 				try {
 					JSONObject jsonObj = service.getJson(url, postParams);
-					Log.i(TAG, jsonObj.toString());
+			//		Log.i(TAG, jsonObj.toString());
 					
 //					List<HashMap<String, String>> data = JsonParser.jsonToList(jsonObj);
 					HashMap<String, String> data = JsonParser.jsonToHash(jsonObj);
-					
+						
 					datas.putAll(data);
 				} catch (JSONException e) {
 					return false;
 				}
 			}
+			
 			
 			return true;
 		}
@@ -191,6 +192,10 @@ public class BasicInfoActivity extends Activity {
 			
 			for (String key : keys) {
 				String value = datas.get(key);
+				
+				if (value.equals("") || value.equals("*")) continue;
+				
+				
 				HashMap<String, String> r = new HashMap<String, String>();
 				r.put("key", key);
 				r.put("value", value);
