@@ -157,9 +157,6 @@ public class InputIssueActivity extends Activity {
 				Log.i(TAG, jsonObject.toString());
 				teachers = JsonParser.keysToList(jsonObject);
 				
-				for (String teacher : teachers) {
-					Log.i(TAG, teacher);
-				}
 			} catch (JSONException e) {
 				e.printStackTrace();
 			}
@@ -179,7 +176,6 @@ public class InputIssueActivity extends Activity {
 			case START:
 				// 显示 progressDialog
 				showProgressDialog();
-				
 				break;
 			case POST_OVER:
 				dismissProgressDialog();
