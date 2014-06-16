@@ -14,7 +14,7 @@ import org.apache.http.params.CoreConnectionPNames;
 import org.apache.http.protocol.HTTP;
 import org.apache.http.util.EntityUtils;
 import org.json.JSONException;
-import org.json.JSONObject;
+import org.json.JSONObject;	
 
 import android.content.Context;
 import android.util.Log;
@@ -23,16 +23,11 @@ import android.widget.Toast;
 import com.sdutlinux.utils.JsonParser;
 
 public class WebService {
-<<<<<<< HEAD
-	public static final String SERVER_URL = "http://192.168.0.102:8000/devices/phone/";
-	public static final String LOGIN_URL = "http://192.168.0.102:8000/devices/phone-login/";
-	public static final String ISSUE_URL = "http://192.168.0.102:8000/devices/phone-maintain/";
-=======
-	public static final String BASE_URL = "http://192.168.1.110:8000/devices";
-	public static final String SERVER_URL = BASE_URL + "/phone/";
-	public static final String LOGIN_URL = BASE_URL + "/phone-login/";
-	public static final String ISSUE_URL = BASE_URL + "/phone-maintain/";
->>>>>>> 45c358f607c5ef13224661579e012996c87653ec
+	public static final String BASE_URL = "http://210.44.176.204";
+	public static final String SERVER_URL = BASE_URL + "/devices/phone/";
+	public static final String LOGIN_URL = BASE_URL + "/accounts/phone/login/";
+	public static final String ISSUE_INFO_URL = BASE_URL + "/maintain/phone/";
+	public static final String ISSUE_URL = BASE_URL + "/maintain/phone/send/";
 	
 	public static final String TAG = "WebServiceTest";
 	
@@ -85,7 +80,6 @@ public class WebService {
 			}
 		} catch (Exception e) {
 			Log.i(TAG, "exception");
-			Toast.makeText(context, "连接失败", Toast.LENGTH_SHORT).show();
 		}
 		return null;
 	}
@@ -150,6 +144,7 @@ public class WebService {
 	 */
 	public JSONObject getJson(String url, List<BasicNameValuePair> params) throws JSONException {
 		String content = post(url, params);
+		
 		JSONObject jsonObj = JsonParser.getJsonFromString(content, "QRinfo");
 		
 		return jsonObj;

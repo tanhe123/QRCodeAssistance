@@ -28,7 +28,6 @@ public class JsonParser {
 	}
 	
 	public static JSONObject stringToJson(String content) throws JSONException {
-		Log.i(TAG, content);
 		return new JSONObject(content);
 	}
 	
