@@ -23,11 +23,11 @@ public class MainUIAdapter extends BaseAdapter {
 	}
 	
 	private static final String[] NAMES = new String[] {
-		"扫描", "历史", "备忘", "注销", "退出"
+		"扫描", /*"历史",*/ "备忘", "注销", "退出"
 	};
 	
 	private static final int[] ICONS = new int[] {
-		R.drawable.scan, R.drawable.history, R.drawable.note, R.drawable.logout, R.drawable.exit
+		R.drawable.scan, /*R.drawable.history,*/ R.drawable.note, R.drawable.logout, R.drawable.exit
 	};
 	
 	@Override
@@ -37,13 +37,11 @@ public class MainUIAdapter extends BaseAdapter {
 
 	@Override
 	public Object getItem(int arg0) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public long getItemId(int arg0) {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 

@@ -156,7 +156,6 @@ public class InputIssueActivity extends Activity {
 				jsonObject = JsonParser.getJsonFromJson(jo, "teacher");
 				Log.i(TAG, jsonObject.toString());
 				teachers = JsonParser.keysToList(jsonObject);
-				
 			} catch (JSONException e) {
 				e.printStackTrace();
 			}

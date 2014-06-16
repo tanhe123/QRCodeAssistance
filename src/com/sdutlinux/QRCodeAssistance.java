@@ -25,7 +25,7 @@ public class QRCodeAssistance extends Activity implements OnItemClickListener{
     public static final String ANONYMOUS = "anonymous";
     
     private boolean isAnonymous;
-    private GridView gridView;
+    private GridView gridView;	
     private LinearLayout ll;
     
     @Override
@@ -65,24 +65,24 @@ public class QRCodeAssistance extends Activity implements OnItemClickListener{
 			Intent openCameraIntent = new Intent(QRCodeAssistance.this,CaptureActivity.class);
 			startActivityForResult(openCameraIntent, 0);		
 			break;
-		case 1:			// 历史
+/*		case 1:			// 历史
 			if (isAnonymous) {
 				AlertDialogFactory.createWarningAlertDialog(this, "警告", "请登录").show();
 			} else {
 				Intent historyIntent = new Intent(QRCodeAssistance.this, HistoryActivity.class);
 				startActivity(historyIntent);				
 			}
-			break;
-		case 2:			// 备忘
+			break;*/
+		case 1:			// 备忘
 			Intent noteIntent = new Intent(QRCodeAssistance.this, NoteActivity.class);
 			startActivity(noteIntent);
 			break;
-		case 3:			// 注销
+		case 2:			// 注销
 			Intent logoutIntent = new Intent(QRCodeAssistance.this, UserLoginActivity.class);
 			logoutIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			startActivity(logoutIntent);
 			break;
-		case 4: 		// 退出
+		case 3: 		// 退出
 			SysApplication.getInstance().exit();
 			break;
 		default:
