@@ -9,7 +9,7 @@
 	    android:layout_height="wrap_content"
 	    android:id="@+id/tv_input_title"
 	    android:text="key"
-	    android:textSize="20sp"
+	    android:textSize="15sp"
 	    android:textColor="@color/dark"
 	    />
 	

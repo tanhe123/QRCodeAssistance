@@ -79,7 +79,7 @@ public class BasicInfoActivity extends Activity {
 		public String[] normal_keys = new String[] {
 				"设备编号", "设备名称", "单价", 
 				"总造价", "存放地点", "使（领）用人", 
-				"现状", "计量单位", "型号", "规格"};
+				"现状", "型号", "规格"};
 
 		public String[] anony_keys = new String[] {
 				"设备编号", "设备名称", "型号", "规格"
