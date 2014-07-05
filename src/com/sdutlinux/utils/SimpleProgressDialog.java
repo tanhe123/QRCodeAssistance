@@ -10,7 +10,7 @@ public class SimpleProgressDialog extends ProgressDialog {
 		this.setTitle(title);
 		this.setProgressStyle(ProgressDialog.STYLE_SPINNER);
 		this.setMessage(message);
-//		this.setCancelable(true);
+		this.setCancelable(true);
 	}
 
 //	public void show() {

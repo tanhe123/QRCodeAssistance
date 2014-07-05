@@ -133,7 +133,7 @@ public class UserLoginActivity extends Activity {
 		progressDialog.setTitle("登录");
 		progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
 		progressDialog.setMessage("正在登录,请稍等......");
-		progressDialog.setCancelable(false);
+		progressDialog.setCancelable(true);
 		progressDialog.show();
 	}
 	
