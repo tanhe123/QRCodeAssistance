@@ -46,7 +46,7 @@
                 <RadioButton 
                     android:id="@+id/rb_issue_info"
                     style="@style/tab_btn"
-                    android:text="维修记录"
+                    android:text="@string/nav_fix_name"
                     />
                 <RadioButton 
                     android:id="@+id/rb_input_issue"

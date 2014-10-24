@@ -126,12 +126,12 @@ public class IssueInfoActivity extends Activity {
 					JSONObject jo = jsonObject.getJSONObject(key);
 					HashMap<String, String> curGroupMap = new HashMap<String, String>();
 					groupData.add(curGroupMap);
-					curGroupMap.put("malfunction", "[故障描述]" + jo.getString("malfunction"));
-					curGroupMap.put("date", "[维修日期]" + jo.getString("date"));
+					curGroupMap.put("malfunction", "[简述]" + jo.getString("malfunction"));
+					curGroupMap.put("date", "[维护日期]" + jo.getString("date"));
 					
 					List<HashMap<String, String>> children = new ArrayList<HashMap<String,String>>();
 					HashMap<String, String> map = new HashMap<String, String>();
-					map.put("solution", "[维修方案]"+jo.getString("solution"));
+					map.put("solution", "[详细内容]"+jo.getString("solution"));
 					children.add(map);
 					childData.add(children);
 				} catch (JSONException e) {

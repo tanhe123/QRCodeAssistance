@@ -24,6 +24,7 @@ import com.sdutlinux.utils.JsonParser;
 
 public class WebService {
 	public static final String BASE_URL = "http://210.44.176.204";
+//	public static final String BASE_URL = "http://192.168.1.152:8000";
 	public static final String SERVER_URL = BASE_URL + "/devices/phone/";
 	public static final String LOGIN_URL = BASE_URL + "/accounts/phone/login/";
 	public static final String ISSUE_INFO_URL = BASE_URL + "/maintain/phone/";

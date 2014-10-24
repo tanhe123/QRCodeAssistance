@@ -29,9 +29,9 @@ import com.sdutlinux.utils.SimpleProgressDialog;
 public class InputIssueActivity extends Activity {
 	private static final String TAG = "InputIssueActivity";
 	
-	private Spinner sp_teachers;
+//	private Spinner sp_teachers;
 	private EditText et_title, et_desc;
-	private List<String> teachers;
+	//private List<String> teachers;
 	private Thread initSpinnerThread;
 	private Button bt_input, bt_cancel;
 	
@@ -52,7 +52,7 @@ public class InputIssueActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_input_issue);
 		
-		sp_teachers = (Spinner) this.findViewById(R.id.sp_teachers);
+	//	sp_teachers = (Spinner) this.findViewById(R.id.sp_teachers);
 		bt_input	= (Button) this.findViewById(R.id.bt_input);
 		bt_cancel	= (Button) this.findViewById(R.id.bt_cancel);
 		
@@ -63,7 +63,7 @@ public class InputIssueActivity extends Activity {
 		id = data.getStringExtra("id");
 		
 		webService = new WebService(this);
-		initSpinnerTeachers();
+	//initSpinnerTeachers();
 
 		bt_input.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -90,12 +90,12 @@ public class InputIssueActivity extends Activity {
 		return true;
 	}
 	
-	
+	/*
 	private void initSpinnerTeachers() {
 		initSpinnerThread = new Thread(initSpinnerRunnable);
 		initSpinnerThread.start();
-	}
-	
+	}*/
+	/*
 	private void initSpinner(List<String>teachers) {
 		// 将可选部分与 ArrayAdapter 连接起来
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, teachers);
@@ -104,12 +104,12 @@ public class InputIssueActivity extends Activity {
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		
 		// 将 adapter 添加到 spinner 中
-		sp_teachers.setAdapter(adapter);
+	//	sp_teachers.setAdapter(adapter);
 		
 		// 添加事件到 spinner
 		// sp_teachers.setOnItemSelectedListener();
 	}
-	
+	*/
 	private Runnable postIssueRunnable = new Runnable() {
 		@Override
 		public void run() {
@@ -118,33 +118,34 @@ public class InputIssueActivity extends Activity {
 			// 提交问题记录
 			String title = et_title.getText().toString();
 			String desc = et_desc.getText().toString();
-			String teacher = sp_teachers.getSelectedItem().toString();
-			String id_teacher = null;
-			try {
+	//		String teacher = sp_teachers.getSelectedItem().toString();
+			//String id_teacher = null;
+	/*		try {
 				id_teacher = jsonObject.getString(teacher);
 			} catch (JSONException e) {
 				e.printStackTrace();
-			}
+			}*/
 			
 			List<BasicNameValuePair> postParams = new ArrayList<BasicNameValuePair>();
 			
 			postParams.add(new BasicNameValuePair("malfunction", title));
 			postParams.add(new BasicNameValuePair("solution", desc));
-			postParams.add(new BasicNameValuePair("head", id_teacher));	// 老师编号
+		//	postParams.add(new BasicNameValuePair("head", id_teacher));	// 老师编号
 			postParams.add(new BasicNameValuePair("id", id));
 			
 			// 测试用
 			postParams.add(new BasicNameValuePair("solved", "True"));
 			// 测试结束
 			
-			Log.i(TAG,  title + " " + desc + " " + id_teacher + " " + id);
+			Log.i(TAG,  title + " " + desc + " "  + " " + id);
 			
 			webService.post(WebService.ISSUE_URL, postParams);		
 			
 			mHandler.sendEmptyMessage(POST_OVER);
 		}
 	};
-	
+		
+	/*
 	private Runnable initSpinnerRunnable = new Runnable() {
 		@Override
 		public void run() {
@@ -162,13 +163,13 @@ public class InputIssueActivity extends Activity {
 			
 			mHandler.sendEmptyMessage(OVER);
 		}
-	};
+	};*/
 	
 	private Handler mHandler = new Handler() {
 		public void handleMessage(android.os.Message msg) {
 			switch (msg.what) {
 			case OVER:
-				initSpinner(teachers);
+//				initSpinner(teachers);
 				// 关闭 progressDialog
 				dismissProgressDialog();		
 				break;
@@ -191,7 +192,7 @@ public class InputIssueActivity extends Activity {
 	
 	private void showProgressDialog() {
 		if (progressDialog == null) {
-			progressDialog = new SimpleProgressDialog(this, "获取老师列表", "正在获取，清稍后");
+			progressDialog = new SimpleProgressDialog(this, "提示", "正在提交，清稍后");
 		}
 		
 		progressDialog.show();

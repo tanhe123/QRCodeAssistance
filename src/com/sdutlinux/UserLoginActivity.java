@@ -190,7 +190,7 @@ public class UserLoginActivity extends Activity {
 				return flag;
 				
 			} catch (JSONException e) {
-				e.printStackTrace();
+				
 			}
 
 			return null;
@@ -206,7 +206,7 @@ public class UserLoginActivity extends Activity {
 			Log.i(TAG, "onPostExecute");
 			
 			if (result == null) {
-				txt_error.setText("登录失败,网络或者解析错误");
+				txt_error.setText("登录失败,服务器、网络或者解析错误");
 				txt_error.setVisibility(View.VISIBLE);
 			}
 			else if ( ! result.contains("-1") ) {	// 登录成功

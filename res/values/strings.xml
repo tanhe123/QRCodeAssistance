@@ -20,8 +20,9 @@
     <string name="hint_username">username</string>
     <string name="hint_password">password</string>
     <string name="anonymous">匿名登录</string>
-    <string name="issue_title">问题简述</string>
-    <string name="issue_desc">问题详细信息</string>
+    <string name="issue_title">简述(50字以内)</string>
+    <string name="issue_desc">详细信息(140字以内)</string>
+    <string name="nav_fix_name">维护记录</string>
     <string name="title_activity_input_issue">InputIssue</string>
     <string name="acount_or_password_wrong">帐号或密码错误</string>
     <string name="input_issue">提交</string>

@@ -36,7 +36,7 @@ public class ShowInfoActivity extends Activity{
 	private RadioGroup radioGroup;
 	
 	private static final String BASIC_INFO = "基本信息";
-	private static final String ISSUE_INFO = "维修记录";
+	private static final String ISSUE_INFO = "维护记录";
 	private static final String INPUT_ISSUE = "提交记录";
 	
 	private Intent basicInfoIntent;
